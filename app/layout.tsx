@@ -2,12 +2,10 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { cookies, headers } from "next/headers";
 import { Inter } from "next/font/google";
-import dynamic from "next/dynamic";
 
 // Components
 import NavBar from "@/app/NavBar";
 import Footer from "@/app/Footer";
-import { PHProvider } from "@/app/Providers";
 
 // Utils
 import { cn } from "@/lib/utils";
@@ -27,10 +25,6 @@ export const metadata: Metadata = {
     },
     description: "Travel engine built for college students.",
 };
-
-const PostHogPageView = dynamic(() => import("@/app/PostHogPageView"), {
-    ssr: false,
-});
 
 export default async function RootLayout(props: { children: ReactNode }) {
     const theme = cookies().get(THEME_COOKIE_NAME)?.value;
@@ -53,19 +47,16 @@ export default async function RootLayout(props: { children: ReactNode }) {
                     <script dangerouslySetInnerHTML={{ __html: renderInitialThemeScript }} />
                 )}
             </head>
-            <PHProvider>
-                <body style={inter.style} className="dark:text-white dark:bg-background flex flex-col h-full">
-                    <PostHogPageView />
-                    <NavBar
-                        session={session}
-                        config={config}
-                    />
-                    <main className="flex-grow flex flex-col">
-                        {props.children}
-                    </main>
-                    <Footer />
-                </body>
-            </PHProvider>
+            <body style={inter.style} className="dark:text-white dark:bg-background flex flex-col h-full">
+                <NavBar
+                    session={session}
+                    config={config}
+                />
+                <main className="flex-grow flex flex-col">
+                    {props.children}
+                </main>
+                <Footer />
+            </body>
         </html>
     );
 }
