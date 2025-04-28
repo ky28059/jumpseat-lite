@@ -1,0 +1,331 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Friend {
+  id        Int      @id @default(autoincrement())
+  userId1   Int
+  userId2   Int
+  createdAt DateTime @default(now())
+  user1     User     @relation("friends_userId1Tousers", fields: [userId1], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user2     User     @relation("friends_userId2Tousers", fields: [userId2], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model User {
+  id                      Int               @id @default(autoincrement())
+  email                   String            @unique
+  password                String
+  isVerified              Boolean           @default(false)
+  isAdmin                 Boolean           @default(false)
+  firstName               String?
+  lastName                String?
+  createdAt               DateTime          @default(now())
+  airports                String[]
+  schoolID                Int?
+  onSniperBeta            Boolean           @default(false)
+  inAutopilot             Boolean           @default(false)
+  personalEmail           String            @default("")
+  isPersonalEmailVerified Boolean           @default(false)
+  excludedAirlines        String[]          @default([])
+  excludedAirports        String[]          @default([])
+  excludedBreaks          BreakType[]       @default([])
+  wantsEmails             Boolean           @default(true)
+  autopilotStatus         AutopilotStatus?
+  blogs                   BlogPost[]
+  friends1                Friend[]          @relation("friends_userId1Tousers")
+  friends2                Friend[]          @relation("friends_userId2Tousers")
+  purchasedFlights        PurchasedFlight[]
+  school                  School?           @relation(fields: [schoolID], references: [id])
+  userBreaks              UserBreak[]
+  searchAnalytics         SearchAnalytics[]
+}
+
+model VerificationToken {
+  id      Int      @id @default(autoincrement())
+  email   String
+  token   String
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model UserBreak {
+  id           Int      @id @default(autoincrement())
+  userID       Int
+  breakID      Int
+  depStartTime DateTime
+  depEndTime   DateTime
+  retStartTime DateTime
+  retEndTime   DateTime
+  noLayovers   Boolean  @default(false)
+  needsCarryOn Boolean  @default(false)
+  hasBooked    Boolean  @default(false)
+  advice       String   @default("No advice yet. Check again soon!")
+  break        Break    @relation(fields: [breakID], references: [id])
+  user         User     @relation(fields: [userID], references: [id])
+
+  @@unique([userID, breakID])
+}
+
+model BlogPost {
+  id        String       @id
+  title     String
+  image     String
+  preview   String       @default("")
+  content   String
+  category  BlogCategory @default(Travel)
+  createdAt DateTime     @default(now())
+  authorId  Int?
+  author    User?        @relation(fields: [authorId], references: [id])
+}
+
+model School {
+  id                Int               @id @default(autoincrement())
+  schoolName        String            @unique
+  airportIatas      String[]
+  externalIatas     String[]          @default([])
+  breaks            Break[]
+  shuttles          ShuttleProvider[]
+  users             User[]
+  searchAnalytics   SearchAnalytics[]
+}
+
+model Break {
+  id               Int              @id @default(autoincrement())
+  schoolID         Int
+  breakType        BreakType
+  isActive         Boolean          @default(false)
+  defaultEndDate   DateTime         @default(dbgenerated("'1970-01-01'::date")) @db.Date
+  defaultStartDate DateTime         @default(dbgenerated("'1970-01-01'::date")) @db.Date
+  leftEndRange     Int              @default(0)
+  leftStartRange   Int              @default(0)
+  realEndDate      DateTime         @default(dbgenerated("'1970-01-01'::date")) @db.Date
+  realStartDate    DateTime         @default(dbgenerated("'1970-01-01'::date")) @db.Date
+  rightEndRange    Int              @default(0)
+  rightStartRange  Int              @default(0)
+  school           School           @relation(fields: [schoolID], references: [id])
+  routes           BreaksOnRoutes[]
+  userBreaks       UserBreak[]
+
+  @@index([isActive])
+}
+
+model ShuttleProvider {
+  id           Int           @id @default(autoincrement())
+  name         String
+  isVariable   Boolean
+  iconUrl      String?
+  bookingURL   String        @default("https://ky28059.github.io/")
+  dateStatuses DateStatus[]
+  schoolID     Int           @default(1)
+  school       School        @relation(fields: [schoolID], references: [id])
+  shuttleTimes ShuttleTime[]
+
+  @@unique([name, schoolID])
+}
+
+model ShuttleTime {
+  id             Int              @id @default(autoincrement())
+  depTime        DateTime         @db.Time(6)
+  arrTime        DateTime         @db.Time(6)
+  providerID     Int
+  direction      Direction
+  airport        String
+  price          Int              @default(0)
+  arrTimeZone    String           @default("Eastern")
+  depTimeZone    String           @default("Eastern")
+  operationalDOW DayOfWeek[]      @default([])
+  provider       ShuttleProvider  @relation(fields: [providerID], references: [id])
+  analytics      AnalyticsCombo[]
+  chosenFor      AnalyticsCombo[] @relation(name: "chosen")
+}
+
+model DateStatus {
+  id          Int             @id @default(autoincrement())
+  date        DateTime
+  lastUpdated DateTime
+  providerID  Int
+  overrides   Json
+  provider    ShuttleProvider @relation(fields: [providerID], references: [id])
+}
+
+model AutopilotStatus {
+  id         Int        @id @default(autoincrement())
+  status     StatusType
+  userID     Int        @unique
+  willRenew  Boolean
+  expiration DateTime
+  startDate  DateTime   @default(now())
+  user       User       @relation(fields: [userID], references: [id])
+}
+
+model Route {
+  id           Int              @id @default(autoincrement())
+  origin       String
+  destination  String
+  depDate      DateTime
+  retDate      DateTime         @default(dbgenerated("'1970-01-01 00:00:00'::timestamp without time zone"))
+  lastUpdated  DateTime         @default(now())
+  isIntl       Boolean          @default(false)
+  timings      DateTime[]
+  isActive     Boolean          @default(true)
+  lowestPrices Int[]
+  lowestStart  DateTime?        @db.Date
+  lwrPrice     Int?
+  uprPrice     Int?
+  direction    Direction        @default(fromSchool)
+  breaks       BreaksOnRoutes[]
+  flights      Flight[]
+  logs         ScrapeLog[]
+
+  @@unique([origin, destination, depDate, retDate])
+  @@index([lastUpdated, isActive])
+  @@index([origin, destination, depDate])
+}
+
+model BreaksOnRoutes {
+  routeID Int
+  breakID Int
+  break   Break @relation(fields: [breakID], references: [id])
+  route   Route @relation(fields: [routeID], references: [id])
+
+  @@id([routeID, breakID])
+  @@index([routeID])
+  @@index([breakID])
+}
+
+model ScrapeLog {
+  id        Int      @id @default(autoincrement())
+  routeID   Int
+  time      DateTime
+  success   Boolean
+  userAgent String
+  errorMsg  String?
+  route     Route    @relation(fields: [routeID], references: [id])
+
+  @@index([time])
+}
+
+model Flight {
+  id              Int               @id @default(autoincrement())
+  routeID         Int
+  airline         String
+  depTime         DateTime
+  arrTime         DateTime
+  layoverAirport  String?
+  prices          Int[]
+  layoverDuration Int?
+  startDate       DateTime?         @db.Date
+  hasCarryOn      Boolean           @default(false)
+  timingIndex     Int               @default(0)
+  flightNumber    String?
+  route           Route             @relation(fields: [routeID], references: [id])
+  purchases       PurchasedFlight[]
+
+  @@index([routeID, airline, depTime, arrTime, layoverAirport])
+  @@index([routeID])
+}
+
+model PurchasedFlight {
+  id            Int      @id @default(autoincrement())
+  purchasePrice Decimal
+  purchaseDate  DateTime
+  targetPrice   Decimal
+  userID        Int
+  flightID      Int
+  flightNumber  String
+  isActive      Boolean  @default(false)
+  fareBrandName String
+  flight        Flight   @relation(fields: [flightID], references: [id])
+  user          User     @relation(fields: [userID], references: [id])
+}
+
+model DuffelFlight {
+  id              Int       @id @default(autoincrement())
+  route           String
+  dep_time        DateTime
+  arr_time        DateTime
+  layover_airport String?
+  present         Boolean[]
+  flight_number   String
+  fare_brand_name String
+  airline         String
+  date_added      DateTime  @db.Date
+}
+
+model SearchAnalytics {
+  id              Int               @id @default(autoincrement())
+  userID          Int?
+  user            User?             @relation(fields: [userID], references: [id])
+  schoolID        Int
+  school          School            @relation(fields: [schoolID], references: [id])
+  external        String[]
+  direction       Direction
+  depDate         DateTime          @db.Date
+  retDate         DateTime?         @db.Date
+  combos          AnalyticsCombo[]
+  onFinalize      Boolean
+  links           String[]
+  createdAt       DateTime          @default(now())
+}
+
+model AnalyticsCombo {
+  id                  Int               @id @default(autoincrement())
+  analyticsID         Int
+  analytics           SearchAnalytics   @relation(fields: [analyticsID], references: [id])
+  chosenShuttleID     Int?
+  chosenShuttle       ShuttleTime?      @relation(name: "chosen", fields: [chosenShuttleID], references: [id])
+  airline             String
+  depTime             DateTime
+  arrTime             DateTime
+  shuttleTimes        ShuttleTime[]
+  direction           Direction
+  sortType            SortType
+  hasLayover          Boolean
+}
+
+enum SortType {
+  BEST
+  CHEAPEST
+  FASTEST
+}
+
+enum BlogCategory {
+  Tech
+  Travel
+  Startup
+}
+
+enum BreakType {
+  Spring
+  Summer
+  Fall
+  Winter
+  Thanksgiving
+}
+
+enum Direction {
+  fromSchool
+  toSchool
+}
+
+enum DayOfWeek {
+  Sun
+  Mon
+  Tue
+  Wed
+  Thu
+  Fri
+  Sat
+}
+
+enum StatusType {
+  Inactive
+  Trial
+  Paid
+}

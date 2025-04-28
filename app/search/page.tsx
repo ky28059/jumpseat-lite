@@ -1,0 +1,87 @@
+import type { Metadata } from "next";
+import { cookies, headers } from "next/headers";
+
+// Components
+import InfoBox from "@/app/search/InfoBox";
+import SearchBoxMap from "@/app/search/SearchBoxMap";
+
+// Icons
+import { BiSolidPlaneAlt } from "react-icons/bi";
+import { FaBus, FaUserFriends } from "react-icons/fa";
+
+// Utils
+import { getBreaksBySchoolName } from "@/lib/db/school";
+import { hostToConfig } from "@/lib/schools";
+import { THEME_COOKIE_NAME } from "@/lib/config";
+import { airportLocationMap, airportMap } from "@/lib/airports";
+import { auth } from "@/auth";
+import prisma from "@/lib/db/prisma";
+
+
+export const metadata: Metadata = {
+    title: "Search",
+};
+
+export default async function Search({ searchParams }: { searchParams: { to?: string } }) {
+    const host = headers().get("Host");
+    const config = hostToConfig(host);
+    const theme = cookies().get(THEME_COOKIE_NAME)?.value;
+
+    // Fetch break dates for the given school.
+    // TODO: default to not purdue?
+    const breaks = await getBreaksBySchoolName(config?.name ?? "Purdue");
+
+    // Load prefilled destination airports:
+    // - If there are search params set, use those first.
+    // - Otherwise, try to load the user's home airports.
+    async function getPrefilledToDest() {
+        if (searchParams.to) return new Set(searchParams.to.split(","));
+
+        const session = await auth();
+        if (!session?.user.id) return;
+
+        const user = await prisma.user.findUnique({
+            where: { id: Number(session.user.id) },
+        });
+        if (!user) return;
+
+        return new Set(user.airports);
+    }
+
+    // TODO: default lat / long?
+    const [lat, lng] = config?.coordinates ?? [40.4237095, -86.9237695];
+
+    return (
+        <main className="pt-28 pb-20 w-full max-w-6xl sm:box-content px-5 sm:px-8 mx-auto">
+            <h1 className="font-semibold text-2xl mb-6">
+                Find your trip
+            </h1>
+            <SearchBoxMap
+                breaks={breaks}
+                config={config}
+                defaultDest={await getPrefilledToDest()}
+                host={host}
+                airportMap={airportMap}
+                airportLocationMap={airportLocationMap}
+                theme={theme}
+            />
+            <div className="flex flex-col sm:flex-row justify-between w-full sm:mt-16 mt-8 gap-10">
+                <InfoBox
+                    title="Shuttles Included"
+                    description="You don’t need to flip through a dozen tabs to line up shuttles with your flights."
+                    icon={FaBus}
+                />
+                <InfoBox
+                    title="The same flights"
+                    description="We have all the flights that Google Flights, Kayak, and Expedia do."
+                    icon={BiSolidPlaneAlt}
+                />
+                <InfoBox
+                    title="Save time"
+                    description="Don’t waste time booking or let travel time cut into your break."
+                    icon={FaUserFriends}
+                />
+            </div>
+        </main>
+    );
+}

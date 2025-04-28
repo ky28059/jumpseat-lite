@@ -1,0 +1,507 @@
+Rank,Locid,City,Airport Name,Hub,CY 22 Enplanements
+1,ATL,Atlanta,Hartsfield - Jackson Atlanta International,L,45396001
+2,DFW,Fort Worth,Dallas-Fort Worth International,L,35345138
+3,DEN,Denver,Denver International,L,33773832
+4,ORD,Chicago,Chicago O'Hare International,L,33120474
+5,LAX,Los Angeles,Los Angeles International,L,32326616
+6,JFK,New York,John F Kennedy International,L,27154885
+7,LAS,Las Vegas,Harry Reid International,L,25480500
+8,MCO,Orlando,Orlando International,L,24469733
+9,MIA,Miami,Miami International,L,23949892
+10,CLT,Charlotte,Charlotte/Douglas International,L,23100300
+11,SEA,Seattle,Seattle-Tacoma International,L,22157862
+12,PHX,Phoenix,Phoenix Sky Harbor International,L,21852586
+13,EWR,Newark,Newark Liberty International,L,21774690
+14,SFO,San Francisco International Airport,San Francisco International,L,20411420
+15,IAH,Houston,George Bush Intcntl/Houston,L,19814052
+16,BOS,Boston,General Edward Lawrence Logan International,L,17443775
+17,FLL,Fort Lauderdale,Fort Lauderdale/Hollywood International,L,15370165
+18,MSP,Minneapolis,Minneapolis-St Paul International/Wold-Chamberlain,L,15242089
+19,LGA,New York,Laguardia,L,14367463
+20,DTW,Detroit,Detroit Metro Wayne County,L,13751197
+21,PHL,Philadelphia,Philadelphia International,L,12421168
+22,SLC,Salt Lake City,Salt Lake City International,L,12383843
+23,DCA,Arlington,Ronald Reagan Washington Ntl,L,11553850
+24,SAN,San Diego,San Diego International,L,11162224
+25,BWI,Glen Burnie,Baltimore/Washington International Thurgood Marshall,L,11151169
+26,TPA,Tampa,Tampa International,L,10539459
+27,AUS,Austin,Austin-Bergstrom International,L,10382573
+28,IAD,Dulles,Washington Dulles International,L,10266324
+29,BNA,Nashville,Nashville International,L,9829062
+30,MDW,Chicago,Chicago Midway International,L,9650281
+31,HNL,Honolulu,Daniel K Inouye International,L,8828395
+32,DAL,Dallas,Dallas Love Field,M,7819129
+33,PDX,Portland,Portland International,M,7241882
+34,STL,St. Louis,St Louis Lambert International,M,6709080
+35,HOU,Houston,William P Hobby,M,6462948
+36,SMF,Sacramento,Sacramento International,M,6040824
+37,MSY,- Kenner,Louis Armstrong New Orleans International,M,5931899
+38,RDU,Raleigh,Raleigh-Durham International,M,5849665
+39,SJC,San Jose,Norman Y Mineta San Jose International,M,5590137
+40,SNA,Santa Ana,John Wayne/Orange County,M,5536313
+41,OAK,Oakland,Metro Oakland International,M,5506232
+42,RSW,Fort Myers,Southwest Florida International,M,5132694
+43,SJU,San Juan,Luis Munoz Marin International,M,5039771
+44,MCI,Kansas City,Kansas City International,M,4796476
+45,SAT,San Antonio,San Antonio International,M,4751610
+46,CLE,Cleveland,Cleveland-Hopkins International,M,4237795
+47,IND,Indianapolis,Indianapolis International,M,4209416
+48,OGG,Kahului,Kahului,M,4125311
+49,PIT,Pittsburgh,Pittsburgh International,M,3918968
+50,CVG,Hebron,Cincinnati/Northern Kentucky International,M,3702997
+51,CMH,Columbus,John Glenn Columbus International,M,3618555
+52,PBI,West Palm Beach,Palm Beach International,M,3257730
+53,JAX,Jacksonville,Jacksonville International,M,3177393
+54,BUR,Burbank,Bob Hope,M,3054729
+55,BDL,Windsor Locks,Bradley International,M,2844713
+56,ONT,Ontario,Ontario International,M,2840758
+57,MKE,Milwaukee,General Mitchell International,M,2671281
+58,CHS,Charleston,Charleston AFB/International,M,2608497
+59,ANC,Anchorage,Ted Stevens Anchorage International,M,2604308
+60,ABQ,Albuquerque,Albuquerque International Sunport,M,2317836
+61,BOI,Boise,Boise Air Trml/Gowen Field,M,2230467
+62,OMA,Omaha,Eppley Airfield,M,2204395
+63,MEM,Memphis,Memphis International,M,2163692
+64,RNO,Reno,Reno/Tahoe International,M,2132856
+65,ORF,Norfolk,Norfolk International,S,2065116
+66,RIC,Highland Springs,Richmond International,S,2042834
+67,BUF,Buffalo,Buffalo Niagara International,S,2007508
+68,KOA,Kailua Kona,Ellison Onizuka Kona International at Keahole,S,2006013
+69,ELP,El Paso,El Paso International,S,1931067
+70,OKC,Oklahoma City,Will Rogers World,S,1928418
+71,SRQ,Sarasota,Sarasota/Bradenton International,S,1911999
+72,GEG,Spokane,Spokane International,S,1905541
+73,SDF,Louisville,Louisville Muhammad Ali International,S,1893647
+74,LIH,Lihue,Lihue,S,1786786
+75,SAV,Savannah,Savannah/Hilton Head International,S,1726444
+76,GRR,Grand Rapids,Gerald R Ford International,S,1716904
+77,MYR,Myrtle Beach,Myrtle Beach International,S,1706591
+78,TUS,Tucson,Tucson International,S,1699305
+79,LGB,Long Beach,Long Beach (Daugherty Field),S,1600987
+80,PVD,Warwick,Rhode Island Tf Green International,S,1571905
+81,PSP,Palm Springs,Palm Springs International,S,1499987
+82,TUL,Tulsa,Tulsa International,S,1447126
+83,DSM,Des Moines,Des Moines International,S,1368130
+84,SFB,Sanford,Orlando Sanford International,S,1367935
+85,BHM,Birmingham,Birmingham-Shuttlesworth International,S,1331035
+86,ALB,Albany,Albany International,S,1277329
+87,SYR,Syracuse,Syracuse Hancock International,S,1244921
+88,PIE,Clearwater,St Pete-Clearwater International,S,1221120
+89,TYS,Alcoa,McGhee Tyson,S,1216383
+90,PNS,Pensacola,Pensacola International,S,1211919
+91,ROC,Rochester,Frederick Douglass/Greater Rochester International,S,1156276
+92,BZN,Bozeman,Bozeman Yellowstone International,S,1136170
+93,COS,Colorado Springs,City of Colorado Springs Municipal,S,1080060
+94,FAT,Fresno,Fresno Yosemite International,S,1077710
+95,GSP,Greer,Greenville Spartanburg International,S,1070422
+96,VPS,Valparaiso,Eglin AFB/Destin-Ft Walton Beach,S,985567
+97,LIT,Little Rock,Bill and Hillary Clinton Ntl/Adams Field,S,983530
+98,PWM,Portland,Portland International Jetport,S,982834
+99,IWA,Mesa,Phoenix-Mesa Gateway,S,973491
+100,PGD,Punta Gorda,Punta Gorda,S,920673
+101,AVL,Asheville,Asheville Regional,S,919929
+102,HPN,White Plains,Westchester County,S,916700
+103,MSN,Madison,Dane County Regional/Truax Field,S,916230
+104,XNA,Bentonville,Northwest Arkansas Ntl,S,812848
+105,GSO,Greensboro,Piedmont Triad International,S,791955
+106,EUG,Eugene,Mahlon Sweet Field,S,781745
+107,ICT,Wichita,Wichita Dwight D Eisenhower Ntl,S,762443
+108,ECP,Panama City,Northwest Florida Beaches International,S,746521
+109,STT,Charlotte Amalie,Cyril E King,S,719594
+110,EYW,Key West,Key West International,S,708807
+111,MHT,Manchester,Manchester Boston Regional,S,643641
+112,ITO,Hilo,Hilo International,S,636426
+113,MAF,Midland,Midland International Air And Space Port,S,633964
+114,MDT,Harrisburg,Harrisburg International,S,625698
+115,ISP,Islip,Long Island MacArthur,S,611749
+116,CID,Cedar Rapids,The Eastern Iowa,S,611010
+117,SBA,Santa Barbara,Santa Barbara Municipal,S,610916
+118,FSD,Sioux Falls,Joe Foss Field,S,606055
+119,BTV,Burlington,Patrick Leahy Burlington International,S,601441
+120,JAN,Jackson,Jackson-Medgar Wiley Evers International,S,598799
+121,HSV,Huntsville,Huntsville International-Carl T Jones Field,S,587572
+122,LEX,Lexington,Blue Grass,S,577424
+123,DAY,Dayton,James M Cox Dayton International,S,559347
+124,SGF,Springfield,Springfield-Branson Ntl,S,539571
+125,ILM,Wilmington,Wilmington International,S,537591
+126,RDM,Redmond,Roberts Field,S,513659
+127,FAI,Fairbanks,Fairbanks International,S,513160
+128,HRL,Harlingen,Valley International,S,508867
+129,CAE,Columbia,Columbia Metro,S,504625
+130,MFR,Medford,Rogue Valley International - Medford,S,504085
+131,LBB,Lubbock,Lubbock Preston Smith International,S,489710
+132,FAR,Fargo,Hector International,S,463181
+133,ACY,Atlantic City,Atlantic City International,S,459272
+134,MFE,McAllen,McAllen International,S,452925
+135,CHA,Chattanooga,Lovell Field,S,431984
+136,GUM,Tamuning,Guam International,S,425651
+137,MSO,Missoula,Missoula Montana,S,425093
+138,GPI,Kalispell,Glacier Park International,N,420635
+139,ABE,Allentown,Lehigh Valley International,N,419772
+140,ATW,Appleton,Appleton International,N,416390
+141,JNU,Juneau,Juneau International,N,403587
+142,JAC,Jackson,Jackson Hole,N,399897
+143,TLH,Tallahassee,Tallahassee International,N,397029
+144,PSC,Pasco,Tri-Cities,N,390762
+145,BIL,Billings,Billings Logan International,N,386948
+146,SBN,South Bend,South Bend International,N,363078
+147,FWA,Fort Wayne,Fort Wayne International,N,359800
+148,AMA,Amarillo,Rick Husband Amarillo International,N,358360
+149,HVN,New Haven,Tweed/New Haven,N,351867
+150,BQN,Aguadilla,Rafael Hernandez,N,346166
+151,BGR,Bangor,Bangor International,N,343528
+152,GPT,Gulfport,Gulfport-Biloxi International,N,339323
+153,MLB,Melbourne,Melbourne Orlando International,N,339139
+154,BTR,Baton Rouge,Baton Rouge Metro Ryan Feld,N,332335
+155,RAP,Rapid City,Rapid City Regional,N,331345
+156,TTN,Trenton,Trenton Mercer,N,328511
+157,BLI,Bellingham,Bellingham International,N,321487
+158,CRP,Corpus Christi,Corpus Christi International,N,319687
+159,IDA,Idaho Falls,Idaho Falls Regional,N,308414
+160,STS,Santa Rosa,Charles M Schulz - Sonoma County,N,304053
+161,GRB,Green Bay,Green Bay/Austin Straubel International,N,301377
+162,ROA,Roanoke,Roanoke/Blacksburg Regional (Woodrum Field),N,299858
+163,ASE,Aspen,Aspen-Pitkin County/Sardy Field,N,299840
+164,FNT,Flint,Bishop International,N,299782
+165,TVC,Traverse City,Cherry Capital,N,288850
+166,PIA,Peoria,General Downing - Peoria International,N,284322
+167,DAB,Daytona Beach,Daytona Beach International,N,280536
+168,SBP,San Luis Obispo,San Luis County Regional,N,273690
+169,SHV,Shreveport,Shreveport Regional,N,272981
+170,AGS,Augusta,Augusta Regional at Bush Field,N,269937
+171,MLI,Moline,Quad Cities International,N,269885
+172,GNV,Gainesville,Gainesville Regional,N,266349
+173,CAK,Akron,Akron-Canton Regional,N,265889
+174,CHO,Charlottesville-Albemarle Airport,Charlottesville-Albemarle,N,262725
+175,MOB,Mobile,Mobile Regional,N,262048
+176,PAE,Everett,Seattle Paine Field International,N,260724
+177,BIS,Bismarck,Bismarck Municipal,N,242918
+178,MTJ,Montrose,Montrose Regional,N,233094
+179,MRY,Monterey,Monterey Regional,N,230669
+180,LFT,Lafayette,Lafayette Regional/Paul Fournet Field,N,226249
+181,GJT,Grand Junction,Grand Junction Regional,N,221682
+182,EGE,Eagle,Eagle County Regional,N,214998
+183,PVU,Provo,Provo Municipal,N,211741
+184,STX,Christiansted,Henry E Rohlsen,N,204320
+185,HDN,Hayden,Yampa Valley,N,197088
+186,TRI,Bristol/Johnson/Kingsport,Tri-Cities,N,191882
+187,AVP,Avoca,Wilkes-Barre/Scranton International,N,190406
+188,DRO,Durango,Durango-La Plata County,N,183273
+189,BMI,Bloomington-Normal Airport,Central Il Regional/Bloomington-Normal,N,175665
+190,FAY,Fayetteville,Fayetteville Regional/Grannis Field,N,165721
+191,CRW,Charleston,West Virginia International Yeager,N,164240
+192,GSN,Saipan,Francisco C Ada/Saipan International,N,162909
+193,BLV,Belleville,Scott AFB/Midamerica St Louis,N,162819
+194,SWF,Newburgh,New York Stewart International,N,154070
+195,EVV,Evansville,Evansville Regional,N,153652
+196,MGM,Montgomery,Montgomery Regional (Dannelly Field),N,151755
+197,LCK,Columbus,Rickenbacker International,N,147957
+198,AEX,Alexandria,Alexandria International,N,147059
+199,KTN,Ketchikan,Ketchikan International,N,143786
+200,BET,Bethel,Bethel,N,142256
+201,GTF,Great Falls,Great Falls International,N,141802
+202,BFL,Bakersfield,Meadows Field,N,141352
+203,ACK,Nantucket,Nantucket Memorial,N,140621
+204,LRD,Laredo,Laredo International,N,139396
+205,MOT,Minot,Minot International,N,139351
+206,OAJ,Jacksonville,Albert J Ellis,N,138235
+208,SGU,St. George,St George Regional,N,128453
+209,BRO,Brownsville,Brownsville/South Padre Island International,N,127239
+210,GRK,Killeen,Robert Gray AAF,N,126160
+211,LBE,Latrobe,Arnold Palmer Regional,N,124422
+212,JQF,Concord,Concord-Padgett Regional,N,124276
+213,SAF,Santa Fe,Santa Fe Regional,N,123452
+214,NYL,Yuma,Yuma MCAS/Yuma International,N,121864
+215,RFD,Rockford,Chicago/Rockford International,N,121544
+216,ACV,Arcata,California Redwood Coast-Humboldt County,N,118924
+217,DLH,Duluth,Duluth International,N,118242
+218,HXD,Hilton Head Island,Hilton Head,N,114475
+219,UNV,State College,State College Regional,N,112474
+220,PSE,Ponce,Mercedita,N,109691
+221,SUN,Hailey,Friedman Memorial,N,100586
+222,RDD,Redding,Redding Regional,N,98725
+223,MKK,Kaunakakai,Molokai,N,98223
+224,SIT,Sitka,Sitka Rocky Gutierrez,N,94648
+225,LNK,Lincoln,Lincoln,N,93953
+226,FLG,- Flagstaff,Flagstaff Pulliam,N,92535
+227,HTS,Huntington,Tri-State/Milton J Ferguson Field,N,91091
+228,GFK,Grand Forks,Grand Forks International,N,89819
+229,MLU,Monroe,Monroe Regional,N,89347
+230,TOL,Toledo,Eugene F Kranz Toledo Express,N,85451
+231,RST,Rochester,Rochester International,N,84504
+232,CSG,Columbus,Columbus,N,84387
+233,LAN,Clinton (Township of),Capital Region International,N,83426
+234,ADQ,Kodiak,Kodiak,N,82913
+235,HLN,Helena,Helena Regional,N,82191
+236,ELM,Elmira,Elmira/Corning Regional,N,81796
+237,COU,Columbia,Columbia Regional,N,81643
+238,PHF,Newport News,Newport News/Williamsburg International,N,80228
+239,ORH,Worcester,Worcester Regional,N,80089
+240,MHK,Manhattan,Manhattan Regional,N,79050
+241,CWA,Mosinee,Central Wisconsin,N,78189
+242,LYH,Timberlake,Lynchburg Regional/Preston Glenn Field,N,76642
+243,ENA,Kenai,Kenai Municipal,N,75180
+244,PUW,Pullman,Pullman/Moscow Regional,N,75027
+245,PBG,Plattsburgh,Plattsburgh International,N,74668
+246,SCK,Stockton,Stockton Metro,N,74529
+247,SCC,Deadhorse,Deadhorse,N,73334
+248,CPR,Casper,Casper/Natrona County International,N,72645
+249,AZO,Kalamazoo,Kalamazoo/Battle Creek International,N,72551
+250,SPI,Springfield,Abraham Lincoln Capital,N,72466
+251,ABI,Abilene,Abilene Regional,N,70419
+252,MBS,Saginaw,MBS International,N,70172
+253,MVY,Vineyard Haven,Martha's Vineyard,N,70098
+254,XWA,Williston,Williston Basin International,N,66287
+255,GRI,Grand Island,Central Nebraska Regional,N,65795
+256,LSE,La Crosse,La Crosse Regional,N,65268
+257,CMI,Savoy,University of Illinois/Willard,N,64715
+258,PSM,Portsmouth,Portsmouth International at Pease,N,64314
+259,EWN,New Bern,Coastal Carolina Regional,N,64011
+260,BVU,Boulder City,Boulder City Municipal,N,63243
+261,OME,Nome,Nome,N,62785
+262,ERI,Erie,Erie International/Tom Ridge Field,N,61860
+263,LCH,Lake Charles,Lake Charles Regional,N,61288
+264,FSM,Fort Smith,Fort Smith Regional,N,59688
+265,IAG,Niagara Falls,Niagara Falls International,N,58741
+266,OTZ,Kotzebue,Ralph Wien Memorial,N,56851
+267,ITH,Ithaca,Ithaca Tompkins International,N,56509
+268,ROW,Roswell,Roswell Air Center,N,55563
+269,IFP,Bullhead City,Laughlin/Bullhead International,N,55106
+270,ACT,Waco,Waco Regional,N,54899
+271,CLL,College Station,Easterwood Field,N,54542
+272,SJT,San Angelo,San Angelo Regional/Mathis Field,N,54347
+273,GUC,Gunnison,Gunnison-Crested Butte Regional,N,52040
+274,SBY,Salisbury,Salisbury-Ocean City Wicomico Regional,N,47275
+275,CKB,Clarksburg,North Central West Virginia,N,46508
+276,GTR,Columbus,Golden Triangle Regional,N,42896
+277,SAW,Gwinn,Marquette/Sawyer Regional,N,42664
+279,LAW,Lawton,Lawton-Fort Sill Regional,N,41890
+280,LWS,Lewiston,Lewiston/Nez Perce County,N,41720
+281,TYR,Tyler,Tyler Pounds Regional,N,40548
+282,VQS,Vieques,Antonio Rivera Rodriguez,N,39529
+283,DHN,Dothan,Dothan Regional,N,38517
+284,VLD,Valdosta,Valdosta Regional,N,38517
+285,AKN,King Salmon,King Salmon,N,37874
+286,LNY,Lanai City,Lanai,N,37741
+287,COD,Cody,Yellowstone Regional,N,37729
+288,BRW,Barrow,Wiley Post-Will Rogers Memorial,N,37530
+289,YKM,Yakima,Yakima Air Trml/McAllister Field,N,36383
+290,TXK,Texarkana,Texarkana Regional-Webb Field,N,35590
+291,HOM,Homer,Homer,N,35407
+292,ABY,Albany,Southwest Georgia Regional,N,35023
+293,EAT,East Wenatchee,Pangborn Memorial,N,34721
+294,BQK,Brunswick,Brunswick Golden Isles,N,34373
+295,ALW,Walla Walla,Walla Walla Regional,N,33821
+296,DLG,Dillingham,Dillingham,N,33151
+297,1G4,Peach Springs,Grand Canyon West,N,32726
+298,PGV,Greenville,Pitt-Greenville,N,32448
+299,HGR,Hagerstown,Hagerstown Regional/Richard A Henson Field,N,32197
+300,MRI,Anchorage,Merrill Field,N,31905
+301,GCK,Garden City,Garden City Regional,N,29628
+303,FLO,Florence,Florence Regional,N,29064
+304,RVR,Ceiba,Jose Aponte De La Torre,N,28966
+305,SWO,Stillwater,Stillwater Regional,N,28867
+306,SPS,Wichita Falls,Sheppard AFB/Wichita Falls Municipal,N,27720
+307,TNI,Tinian (Municipality),Francisco Manglona Borja/Tinian International,N,26926
+308,DRT,Del Rio,Del Rio International,N,26641
+309,BJI,Bemidji,Bemidji Regional,N,26478
+310,GGG,Longview,East Texas Regional,N,25982
+311,SUX,Sioux City,Sioux Gateway/Brig General Bud Day Field,N,25874
+312,PLN,Pellston,Pellston Regional/Emmet County,N,25408
+313,SHR,Sheridan,Sheridan County,N,25104
+314,BPT,Beaumont,Jack Brooks Regional,N,24882
+315,GCC,Gillette,Northeast Wyoming Regional,N,24144
+316,PRC,Prescott,Prescott Regional - Ernest A Love Field,N,24100
+317,PSG,Petersburg,Petersburg James A Johnson,N,23955
+318,CMX,Hancock,Houghton County Memorial,N,22672
+319,EAR,Kearney,Kearney Regional,N,22283
+320,CIU,Sault Ste. Marie,Chippewa County International,N,22147
+321,CPX,Culebra,Benjamin Rivera Noriega,N,21788
+322,ABR,Aberdeen,Aberdeen Regional,N,21776
+323,BFI,Seattle,Boeing Field/King County International,N,21717
+324,PPG,Pago Pago,Pago Pago International,N,21690
+325,DIK,Dickinson,Dickinson/Theodore Roosevelt Regional,N,21606
+327,DUT,Unalaska,Unalaska,N,21034
+328,RHI,Rhinelander,Rhinelander/Oneida County,N,20922
+329,JLN,Joplin,Joplin Regional,N,20786
+330,IMT,Iron Mountain,Ford,N,20727
+331,PGA,Page,Page Municipal,N,20403
+332,ART,Watertown,Watertown International,N,20379
+333,ESC,Escanaba,Delta County,N,20339
+334,BRD,Brainerd,Brainerd Lakes Regional,N,20311
+335,SLN,Salina,Salina Regional,N,20252
+336,CYS,Cheyenne,Cheyenne Regional/Jerry Olson Field,N,19764
+337,CNY,Moab,Canyonlands Regional,N,18841
+338,STC,St. Cloud,St. Cloud Regional,N,18347
+339,BTM,Butte,Bert Mooney,N,18194
+340,LAR,Laramie,Laramie Regional,N,17982
+341,HOB,Hobbs,Lea County Regional,N,17843
+342,EAU,Eau Claire,Chippewa Valley Regional,N,17346
+343,OTH,North Bend,Southwest Oregon Regional,N,17061
+344,CDV,Cordova,Merle K (Mudhole) Smith,N,16844
+345,SIG,San Juan,Fernando Luis Ribas Dominicci,N,16600
+346,TWF,Twin Falls,Joslin Field/Magic Valley Regional,N,16548
+347,PIR,Pierre,Pierre Regional,N,16441
+348,ALO,Waterloo,Waterloo Regional,N,16328
+349,AKW,Klawock,Klawock,N,16167
+350,SMX,Santa Maria,Santa Maria Public/Capt G Allan Hancock Field,N,15911
+351,DBQ,Dubuque,Dubuque Regional,N,15673
+352,OWB,Owensboro,Owensboro/Daviess County Regional,N,15636
+353,TUP,Tupelo,Tupelo Regional,N,15590
+354,HYA,Hyannis,Cape Cod Gateway,N,15562
+355,PQI,Presque Isle,Presque Isle International,N,15428
+356,RKS,Rock Springs,Southwest Wyoming Regional,N,15192
+357,ATY,Watertown,Watertown Regional,N,15042
+358,MCN,Macon,Middle Georgia Regional,N,14881
+359,PAH,Paducah,Barkley Regional,N,14677
+360,WST,Westerly,Westerly State,N,14435
+361,BID,Block Island,Block Island State,N,14366
+363,MEI,Meridian,Key Field,N,13999
+365,HIB,Hibbing,Range Regional,N,13460
+366,WRG,Wrangell,Wrangell,N,13337
+367,BGM,Binghamton,Greater Binghamton/Edwin A Link Field,N,13328
+368,PIB,Moselle,Hattiesburg/Laurel Regional,N,13125
+369,FNL,Loveland,Northern Colorado Regional,N,13058
+370,APN,Alpena,Alpena County Regional,N,13046
+372,CVN,Clovis,Clovis Regional,N,13028
+373,RIW,Riverton,Central Wyoming Regional,N,12972
+375,BFF,Scottsbluff,Western Nebraska Regional/William B Heilig Field,N,12548
+376,BED,Bedford,Laurence G Hanscom Field,N,12502
+379,LBF,North Platte,North Platte Regional/Lee Bird Field,N,12306
+380,INL,International Falls,Falls International/Einarson Field,N,12260
+381,CDC,Cedar City,Cedar City Regional,N,12245
+382,YAK,Yakutat,Yakutat,N,12139
+383,OGD,Ogden,Ogden-Hinckley,N,12024
+384,PIH,Arbon Valley,Pocatello Regional,N,11961
+385,TEX,Telluride,Telluride Regional,N,11650
+386,GRO,Northern Islands (Municipality),Benjamin Taisacan Manglona International,N,11307
+387,JMS,Jamestown,Jamestown Regional,N,11299
+388,MKG,Muskegon,Muskegon County,N,11292
+390,RKD,Rockland,Knox County Regional,N,11200
+391,VEL,Vernal,Vernal Regional,N,11071
+392,FHR,Friday Harbor,Friday Harbor,N,10883
+394,BIH,Bishop,Bishop,N,10754
+397,GLH,Greenville,Greenville Mid-Delta,N,10452
+398,SHD,Weyers Cave,Shenandoah Valley Regional,N,10400
+399,MWA,Marion,Veterans Airport of Southern Illinois,N,10399
+400,GAL,Galena,Edward G Pitka Sr,N,10381
+401,GST,Gustavus,Gustavus,N,10179
+403,SBD,San Bernardino,San Bernardino International,N,10142
+404,HYS,Hays,Hays Regional,N,10089
+405,LWB,Lewisburg,Greenbrier Valley,N,10048
+406,ALS,Alamosa,San Luis Valley Regional/Bergman Field,N,10044
+408,FXE,Fort Lauderdale,Fort Lauderdale Exec,None,9902
+409,DEC,Decatur,Decatur,None,9871
+410,LEB,Lebanon,Lebanon Municipal,None,9855
+413,IPL,Imperial,Imperial County,None,9180
+414,ENM,Emmonak,Emmonak,None,8971
+415,CGI,Cape Girardeau,Cape Girardeau Regional,None,8713
+416,TVF,Thief River Falls,Thief River Falls Regional,None,8648
+417,EKO,Elko,Elko Regional,None,8459
+418,BHB,Bar Harbor,Hancock County/Bar Harbor,None,8396
+420,CEC,Crescent City,Jack McNamara Field,None,8218
+422,UNK,Unalakleet,Unalakleet,None,8137
+424,LBL,Liberal,Liberal Mid-America Regional,None,8019
+425,TBN,Fort Leonard Wood (U.S. Army),Waynesville-St Robert Regional Forney Field,None,7988
+426,PUB,Pueblo,Pueblo Memorial,None,7984
+427,OGS,Ogdensburg,Ogdensburg International,None,7841
+429,JST,Johnstown,John Murtha Johnstown/Cambria County,None,7764
+431,VCT,Victoria,Victoria Regional,None,7505
+432,PVC,Provincetown,Provincetown Municipal,None,7417
+433,ORS,Eastsound,Orcas Island,None,7365
+434,DVL,Devils Lake,Devils Lake Regional,None,7349
+435,WYS,West Yellowstone,Yellowstone,None,7346
+436,MGW,Morgantown,Morgantown Municipal/Walter L Bill Hart Field,None,7272
+437,HNS,Haines,Haines,None,7253
+439,MAZ,Mayaguez,Eugenio Maria De Hostos,None,7059
+440,MSL,Muscle Shoals,Northwest Alabama Regional,None,7049
+441,IWD,Ironwood,Gogebic/Iron County,None,7027
+442,CEZ,Cortez,Cortez Municipal,None,6998
+443,SKX,Taos,Taos Regional,None,6891
+444,SVC,Silver City,Grant County,None,6550
+445,SDY,Sidney,Sidney-Richland Regional,None,6535
+446,MCW,Clear Lake,Mason City Municipal,None,6504
+447,DDC,Dodge City,Dodge City Regional,None,6464
+449,LUP,Kalaupapa,Kalaupapa,None,6362
+450,LNS,Lititz,Lancaster,None,6274
+452,BBG,Branson,Branson,None,6204
+453,DUJ,Brookville,Dubois Regional,None,6200
+454,HNH,Hoonah,Hoonah,None,5950
+455,AUG,Augusta,Augusta State,None,5804
+456,HRO,Harrison,Boone County,None,5780
+457,W33,Friday Harbor,Friday Harbor,None,5562
+458,VDZ,Valdez,Valdez Pioneer Field,None,5557
+459,RUT,Rutland,Rutland/Southern Vermont Regional,None,5540
+460,FOD,Fort Dodge,Fort Dodge Regional,None,5531
+461,CNM,Carlsbad,Cavern City Air Terminal,None,5311
+462,SGY,Skagway,Skagway,None,5293
+464,CXF,Coldfoot,Coldfoot,None,5212
+465,MBL,Manistee,Manistee County/Blacker,None,5210
+466,SLK,Saranac Lake,Adirondack Regional,None,5181
+467,PDT,Pendleton,Eastern Oregon Regional at Pendleton,None,5079
+468,PKB,Parkersburg,Mid-Ohio Valley Regional,None,5032
+469,ILG,Wilmington,New Castle,None,5006
+470,BKW,Beckley,Raleigh County Memorial,None,5004
+471,HHR,Hawthorne,Jack Northrop Field/Hawthorne Municipal,None,5001
+472,AQH,Quinhagak,Quinhagak,None,4996
+473,HOT,Hot Springs,Memorial Field,None,4975
+474,ANI,Aniak,Aniak,None,4971
+475,VAK,Chevak,Chevak,None,4810
+476,DTS,Destin,Destin Exec,None,4801
+477,UIN,Quincy,Quincy Regional-Baldwin Field,None,4774
+478,FYU,Fort Yukon,Fort Yukon,None,4728
+479,MSS,Massena,Massena International-Richards Field,None,4721
+480,HPB,Hooper Bay,Hooper Bay,None,4699
+481,KSM,Saint Mary's,St Mary's,None,4680
+482,IRK,Kirksville,Kirksville Regional,None,4667
+483,SOW,Show Low,Show Low Regional,None,4535
+484,BFD,Bradford,Bradford Regional,None,4509
+485,AOO,Altoona,Altoona/Blair County,None,4442
+487,MUE,Kamuela,Waimea-Kohala,None,4352
+489,GDV,Glendive,Dawson Community,None,4313
+491,ILI,Iliamna,Iliamna,None,4280
+492,IIK,Kipnuk,Kipnuk,None,4221
+494,AIA,Alliance,Alliance Municipal,None,4156
+495,MMH,Mammoth Lakes,Mammoth Yosemite,None,4056
+496,ELD,El Dorado,South Arkansas Regional at Goodwin Field,None,3923
+497,JBR,Jonesboro,Jonesboro Municipal,None,3812
+498,SOV,Seldovia,Seldovia,None,3738
+499,CRQ,Carlsbad,McClellan-Palomar,None,3715
+500,CDR,Chadron,Chadron Municipal,None,3641
+501,BRL,Burlington,Southeast Iowa Regional,None,3605
+503,PHO,Point Hope,Point Hope,None,3572
+504,SHH,Shishmaref,Shishmaref,None,3552
+505,SCM,Scammon Bay,Scammon Bay,None,3550
+506,WLK,Selawik,Selawik,None,3522
+507,KAE,Kake,Kake,None,3431
+508,MCE,Merced,Merced Yosemite Regional,None,3431
+509,WTK,Noatak,Noatak,None,3402
+510,MKL,Jackson,McKellar-Sipes Regional,None,3398
+511,BVK,Buckland,Buckland,None,3362
+512,OOK,Toksook Bay,Toksook Bay,None,3279
+513,CDB,Cold Bay,Cold Bay,None,3240
+514,OLF,Wolf Point,L M Clayton,None,3207
+515,Z09,Kasigluk,Kasigluk,None,3182
+517,D76,Noorvik,Robert /Bob/ Curtis Memorial,None,3096
+518,SVA,Savoonga,Savoonga,None,3085
+519,KVC,King Cove,King Cove,None,3036
+520,GGW,Glasgow,Wokal Field/Glasgow-Valley County,None,2982
+521,SQL,San Carlos,San Carlos,None,2957
+522,S31,Lopez,Lopez Island,None,2937
+523,KVL,Kivalina,Kivalina,None,2896
+524,2A3,Larsen Bay,Larsen Bay,None,2895
+525,CFK,Chefornak,Chefornak,None,2893
+526,HVR,Havre,Havre City-County,None,2863
+527,AWI,Wainwright,Wainwright,None,2860
+528,HLA,Huslia,Huslia,None,2849
+530,GAM,Gambell,Gambell,None,2842
+532,A61,Tuntutuliak,Tuntutuliak,None,2788
+533,TOG,Togiak,Togiak,None,2727
+534,0AK,Pilot Station,Pilot Station,None,2724
+536,MCG,McGrath,McGrath,None,2700
+537,DUY,Kongiganak,Kongiganak,None,2680
+539,ADK,Adak (Naval) Station/Mitchell Field,Adak,None,2616
+540,EEK,Eek,Eek,None,2616
+541,AKP,Anaktuvuk Pass,Anaktuvuk Pass,None,2597
+542,HNM,Hana,Hana,None,2562
+543,SDP,Sand Point,Sand Point,None,2552
