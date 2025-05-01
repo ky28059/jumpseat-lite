@@ -50,10 +50,6 @@ export default function NavBar(props: NavBarProps) {
                 Search
             </NavLink>
 
-            <NavLink href="/autopilot">
-                Autopilot
-            </NavLink>
-
             {/*
             <NavLink href="/social">
                 Social

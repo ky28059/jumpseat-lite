@@ -35,7 +35,6 @@ export default function Footer() {
                             <h5 className="mb-3 font-semibold">Product</h5>
                             <ul className="flex flex-col gap-1.5 text-sm">
                                 <FooterInternalLink href="/search">Search</FooterInternalLink>
-                                <FooterInternalLink href="/autopilot">Autopilot</FooterInternalLink>
                                 <FooterExternalLink href="https://portal.jumpseatapp.com/">Portal</FooterExternalLink>
                                 {/* <FooterInternalLink href="/social">Social</FooterInternalLink> */}
                             </ul>

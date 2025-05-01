@@ -25,10 +25,6 @@ export default function NavBarMobileMenu() {
                     Search
                 </NavBarMenuLink>
 
-                <NavBarMenuLink href="/autopilot" setOpen={setOpen}>
-                    Autopilot
-                </NavBarMenuLink>
-
                 {/*
                 <NavBarMenuLink href="/social">
                     Social
