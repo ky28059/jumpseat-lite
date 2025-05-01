@@ -7,7 +7,7 @@ import { BookingOption, getBookingHref } from "@/lib/search/serp";
 import ResultsContext from "@/contexts/ResultsContext";
 
 // Components
-import HackerFareModal from "../autopilot/HackerFareModal";
+import HackerFareModal from "./HackerFareModal";
 
 // Icons
 import { MdAirplanemodeActive, MdLocationOn } from "react-icons/md";

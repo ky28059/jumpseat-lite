@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { SortType } from '@prisma/client';
+import { SortType } from '@/contexts/ResultsContext';
 import { cn } from '@/lib/utils';
 
 

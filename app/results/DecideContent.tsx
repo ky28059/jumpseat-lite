@@ -9,8 +9,7 @@ import ComboCard from '@/app/results/ComboCard';
 import Spinner from '@/components/Spinner';
 
 // Contexts
-import ResultsContext, { ResultsStage } from '@/contexts/ResultsContext';
-import { SortType } from '@prisma/client';
+import ResultsContext, { ResultsStage, SortType } from '@/contexts/ResultsContext';
 
 // Utils
 import type { Combo } from '@/app/results/ComboCard';

@@ -9,6 +9,12 @@ export enum ResultsStage {
     FINALIZE,
 }
 
+export enum SortType {
+    FASTEST,
+    CHEAPEST,
+    BEST
+}
+
 type InputValue = {
     name: string,
     value: boolean
