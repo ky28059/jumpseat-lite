@@ -46,13 +46,7 @@ type ResultsContext = {
     carryCnt: number,
     checkCnt: number,
 
-    analyticsID: number,
-    setAnalyticsID: (f: number) => void,
-
-    userID?: number,
-
-    servicesClicked: string[],
-    setServicesClicked: (f: string[]) => void
+    userID?: number
 }
 const ResultsContext = createContext<ResultsContext>({
     school: '',
@@ -79,12 +73,6 @@ const ResultsContext = createContext<ResultsContext>({
     },
     setFilter: () => {},
     carryCnt: 0,
-    checkCnt: 0,
-
-    analyticsID: 0,
-    setAnalyticsID: () => {},
-
-    servicesClicked: [],
-    setServicesClicked: () => {}
+    checkCnt: 0
 });
 export default ResultsContext;

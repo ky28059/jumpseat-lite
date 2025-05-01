@@ -8,7 +8,7 @@ import { Timeline as ItineraryTimeline } from "@/app/results/Timeline";
 import FormattedTimeRange from "@/app/search/FormattedTimeRange";
 
 // Utils
-import type { ShuttleTime, SortType } from "@prisma/client";
+import type { ShuttleTime } from "@prisma/client";
 import type { Itinerary } from "@/lib/search/serp";
 import {
     calculateComboTimes,
@@ -20,7 +20,6 @@ import {
     formatTimeRange
 } from "@/lib/time";
 import { cn } from "@/lib/utils";
-import { writeSelectedCombo } from "@/lib/db/analytics";
 
 // Contexts
 import ResultsContext, { ResultsStage } from "@/contexts/ResultsContext";
@@ -52,10 +51,9 @@ type ComboCardProps = {
 
     finalize?: boolean,
     firstShuttlePrice?: number,
-    sortType?: SortType
 };
 export default function ComboCard(props: ComboCardProps) {
-    const { school, filter, airportMap, direction, roundTrip, stage, analyticsID } = useContext(ResultsContext);
+    const { school, filter, airportMap, direction, roundTrip, stage } = useContext(ResultsContext);
     const { itinerary, shuttleOptions } = props.combo;
 
     const [expanded, setExpanded] = useState(false);
@@ -68,8 +66,6 @@ export default function ComboCard(props: ComboCardProps) {
     function onSelect() {
         props.setCombo && props.setCombo(props.combo);
         props.setShuttleIndex && props.setShuttleIndex(selectedShuttleIndex);
-        if (process.env.NODE_ENV !== "development")
-            writeSelectedCombo(props.combo.comboID ?? -1, props.combo.shuttleOptions[selectedShuttleIndex].id, props.combo, direction, props.sortType!, analyticsID);
     }
 
     const handleScroll = () => {

@@ -71,10 +71,6 @@ export default function ResultsContent(props: ResultsContentProps) {
     const [retCombo, setRetCombo] = useState<Combo | null>(null);
     const [retShuttleIndex, setRetShuttleIndex] = useState(0);
 
-    const [analyticsID, setAnalyticsID] = useState<number>(-1);
-
-    const [servicesClicked, setServicesClicked] = useState<string[]>([]);
-
     function selectDepCombo(c: Combo) {
         setDepCombo(c);
         setStage(props.roundTrip ? ResultsStage.RETURN : ResultsStage.FINALIZE)
@@ -103,11 +99,7 @@ export default function ResultsContent(props: ResultsContentProps) {
                 setFilter,
                 carryCnt: props.carryCnt,
                 checkCnt: props.checkCnt,
-                analyticsID,
-                setAnalyticsID,
                 userID: props.userID,
-                servicesClicked: servicesClicked,
-                setServicesClicked: setServicesClicked
             }}
         >
             <ResultsBreadcrumbs setStage={setStage} />

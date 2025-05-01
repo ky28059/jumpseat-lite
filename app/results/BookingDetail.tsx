@@ -13,11 +13,10 @@ import HackerFareModal from "../autopilot/HackerFareModal";
 import { MdAirplanemodeActive, MdLocationOn } from "react-icons/md";
 import { FaCheck, FaX } from "react-icons/fa6";
 import { IoBag } from "react-icons/io5";
-import { linkClick } from "@/lib/db/analytics";
 
 
 export default function BookingDetail(props: BookingOption) {
-    const { roundTrip, depCombo, retCombo, analyticsID, servicesClicked, setServicesClicked } = useContext(ResultsContext);
+    const { roundTrip, depCombo, retCombo } = useContext(ResultsContext);
     const [href, setHref] = useState<string | undefined>(undefined);
 
     const [hackerFareDeparture, setHackerFareDeparture] = useState<string>("");
@@ -103,15 +102,7 @@ export default function BookingDetail(props: BookingOption) {
                         <button
                             className="bg-blue-500 text-center w-fit self-center rounded-md text-white px-3 py-2 font-medium transition hover:opacity-80 disabled:opacity-50"
                             disabled={!href}
-                            onClick={() => {
-                                    window.open(href);
-                                    if (process.env.NODE_ENV === "development") return;
-                                    if (!props?.together?.book_with) return;
-                                    const newServicesClicked = [...servicesClicked, props.together.book_with];
-                                    setServicesClicked(newServicesClicked);
-                                    linkClick(analyticsID, newServicesClicked);
-                                }
-                            }
+                            onClick={() => window.open(href)}
                         >
                             ${props.together.price}
                         </button>

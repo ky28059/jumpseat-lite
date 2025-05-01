@@ -97,17 +97,17 @@ model ShuttleProvider {
 }
 
 model ShuttleTime {
-  id             Int             @id @default(autoincrement())
-  depTime        DateTime        @db.Time(6)
-  arrTime        DateTime        @db.Time(6)
-  providerID     Int
-  direction      Direction
-  airport        String
-  price          Int             @default(0)
-  arrTimeZone    String          @default("America/Indianapolis")
-  depTimeZone    String          @default("America/Indianapolis")
+  id          Int             @id @default(autoincrement())
+  depTime     DateTime        @db.Time(6)
+  arrTime     DateTime        @db.Time(6)
+  providerID  Int
+  direction   Direction
+  airport     String
+  price       Int             @default(0)
+  arrTimeZone String          @default("America/Indianapolis")
+  depTimeZone String          @default("America/Indianapolis")
   // operationalDOW DayOfWeek[]     @default([])
-  provider       ShuttleProvider @relation(fields: [providerID], references: [id])
+  provider    ShuttleProvider @relation(fields: [providerID], references: [id])
 }
 
 enum BlogCategory {

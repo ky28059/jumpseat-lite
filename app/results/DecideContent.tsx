@@ -10,7 +10,6 @@ import Spinner from '@/components/Spinner';
 
 // Contexts
 import ResultsContext, { ResultsStage } from '@/contexts/ResultsContext';
-
 import { SortType } from '@prisma/client';
 
 // Utils
@@ -19,7 +18,6 @@ import type { Itinerary } from '@/lib/search/serp';
 import { getCombos } from '@/lib/search';
 import { calculateComboTimes } from '@/lib/time';
 import { cn } from '@/lib/utils';
-import { createAnalytics, setFinalize, writeCombos } from '@/lib/db/analytics';
 
 
 type DecideContentProps = {
@@ -37,56 +35,18 @@ type DecideContentProps = {
     schoolID: number
 }
 
-function dateStringToDate(isoString?: string) {
-
-    if (!isoString) {
-        return undefined;
-    }
-
-    return new Date(Date.UTC(
-        parseInt(isoString.slice(0, 4)),
-        parseInt(isoString.slice(5, 7)) - 1, // Month is 0-indexed
-        parseInt(isoString.slice(8, 10))
-      ));
-}
-
-type StageSort = {
-    sort: SortType,
-    stage: ResultsStage
-};
-
-
 export default function DecideContent(props: DecideContentProps) {
     const [combos, setCombos] = useState<Combo[]>([]);
     const [parsed, setParsed] = useState<Combo[]>([]); // TODO: derived state?
 
     const [refreshing, startTransition] = useTransition();
 
-    const { school, roundTrip, depDate, retDate, direction, extAirports, filter, airportMap, depCombo, carryCnt, checkCnt, stage, analyticsID, setAnalyticsID, userID } = useContext(ResultsContext);
+    const { school, roundTrip, depDate, retDate, direction, extAirports, filter, airportMap, depCombo, carryCnt, checkCnt, stage } = useContext(ResultsContext);
     const [sort, setSort] = useState<SortType>(SortType.BEST);
-    const [usedSorts, setUsedSorts] = useState<StageSort[]>([]);
-
-    useEffect(() => {
-        if (analyticsID == -1) return;
-        if (stage == ResultsStage.FINALIZE && process.env.NODE_ENV !== "development") setFinalize(analyticsID);
-    }, [stage, analyticsID]);
 
     // Fetch all combos. For return flights, wait until a departure flight has been selected first.
     useEffect(() => {
         if (props.return && !props.depFlight) return;
-
-        if (analyticsID == -1) {
-            if (process.env.NODE_ENV === 'development') {
-                setAnalyticsID(0);
-            }
-            else {
-                createAnalytics(props.schoolID, extAirports, direction, dateStringToDate(depDate)!, userID, dateStringToDate(retDate)).then((response) => {
-                    if (response.ok) {
-                        setAnalyticsID(response.id!);
-                    }
-                });
-            }
-        }
 
         getCombos({
             school,
@@ -151,8 +111,7 @@ export default function DecideContent(props: DecideContentProps) {
 
     useEffect(() => {
         startTransition(async () => {
-
-            if (analyticsID == -1 || combos.length == 0) return;
+            if (combos.length == 0) return;
 
             const originCheckboxes = props.return ? filter.toAirports : filter.fromAirports;
             const destCheckboxes = props.return ? filter.fromAirports : filter.toAirports;
@@ -184,29 +143,9 @@ export default function DecideContent(props: DecideContentProps) {
                 sort === SortType.CHEAPEST ? sortCheapest :
                 (a, b) => sortBest(a, b, minTimeMinutes, maxTimeMinutes, minPrice, maxPrice)
             );
-            if (process.env.NODE_ENV !== "development") {
-                let found = false;
-                for (let us of usedSorts) {
-                    if (us.sort == sort && us.stage == stage) {
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    const changedCnt = Math.min(5, newParsed.length);
-                    const response = await writeCombos(analyticsID, newParsed.slice(0, changedCnt), direction, sort);
-                    if (response.ok) {
-                        for (let index = 0; index < changedCnt; index++) {
-                            newParsed[index].comboID = response.comboIDs![index];
-                            console.log(response.comboIDs![index], newParsed[index].comboID);
-                        }
-                    }
-                }
-                setUsedSorts([...usedSorts, {sort: sort, stage: stage}]);
-            }
             setParsed(newParsed);
         })
-    }, [combos, filter, sort, analyticsID])
+    }, [combos, filter, sort])
 
     if (props.hidden) return null;
 
@@ -243,7 +182,6 @@ export default function DecideContent(props: DecideContentProps) {
                             setShuttleIndex={props.setShuttleIndex}
                             key={c.itinerary.departure_token}
                             firstShuttlePrice={stage == ResultsStage.DEPARTURE ? undefined : depCombo?.shuttleOptions[props.depShuttleIndex!].price}
-                            sortType={sort}
                         />
                     ))}
                 </section>

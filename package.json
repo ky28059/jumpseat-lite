@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.645.0",
-    "@duffel/api": "^2.10.0",
-    "@duffel/components": "^3.7.17",
     "@hookform/resolvers": "^3.4.2",
     "@prisma/client": "^5.16.2",
     "@radix-ui/react-alert-dialog": "^1.1.1",

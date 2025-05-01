@@ -6,11 +6,10 @@ import { useContext } from "react";
 import type { Combo } from "@/app/results/ComboCard";
 import ResultsContext from "@/contexts/ResultsContext";
 
-// Icon
+// Icons
 import { MdLocationOn } from "react-icons/md";
 import { FaCheck, FaVanShuttle, FaX } from "react-icons/fa6";
 import { IoBag } from "react-icons/io5";
-import { linkClick } from "@/lib/db/analytics";
 
 
 type ShuttleBookingDetailProps = {
@@ -20,7 +19,7 @@ type ShuttleBookingDetailProps = {
     addedPrice?: number
 };
 export default function ShuttleBookingDetail(props: ShuttleBookingDetailProps) {
-    const { filter, direction, school, analyticsID, servicesClicked, setServicesClicked } = useContext(ResultsContext);
+    const { filter, direction, school } = useContext(ResultsContext);
 
     const addedPrice = props.addedPrice ?? 0;
 
@@ -76,14 +75,7 @@ export default function ShuttleBookingDetail(props: ShuttleBookingDetailProps) {
 
                     <button
                         className="bg-blue-500 text-center w-fit self-center rounded-md text-white text-sm px-3 py-2 font-medium transition hover:opacity-80 disabled:opacity-50"
-                        onClick={() => {
-                                window.open(provider.bookingUrl);
-                                if (process.env.NODE_ENV === "development") return;
-                                const newServicesClicked = [...servicesClicked, provider.name];
-                                setServicesClicked(newServicesClicked);
-                                linkClick(analyticsID, newServicesClicked);
-                            }
-                        }
+                        onClick={() => window.open(provider.bookingUrl)}
                     >
                         ${shuttle.price + addedPrice}
                     </button>
