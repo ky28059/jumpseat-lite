@@ -27,17 +27,22 @@ import type { Airport } from "@/lib/airports";
 import { Break, BreakType, Direction } from "@prisma/client";
 import { cn } from "@/lib/utils";
 import { hostToConfig } from "@/lib/schools";
-import { convertTimezone } from "@/app/autopilot/AutopilotContent";
+
+
+// TODO?
+export function convertTimezone(inputDate: Date) {
+    return new Date(inputDate.getTime() + inputDate.getTimezoneOffset() * 60 * 1000);
+}
 
 type SearchBoxProps = {
-    breakDates: Break[];
-    airportLocs: [string, Airport[]][];
-    dest: Set<string>;
-    host: string | null;
-    setDest: (newDest: Set<string>) => void;
-    direction: Direction;
-    setDirection: (arg0: Direction) => void;
-};
+    breakDates: Break[],
+    airportLocs: [string, Airport[]][],
+    dest: Set<string>,
+    host: string | null,
+    setDest: (newDest: Set<string>) => void,
+    direction: Direction,
+    setDirection: (arg0: Direction) => void,
+}
 export default function SearchBox(props: SearchBoxProps) {
     const config = hostToConfig(props.host);
     const [numCarryOn, setNumCarryOn] = useState(0);

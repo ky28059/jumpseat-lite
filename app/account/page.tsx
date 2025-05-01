@@ -25,9 +25,7 @@ export default async function AccountPage() {
 
     const user = await prisma.user.findUnique({
         where: { id: Number(session.user.id) },
-        include: {
-            school: true
-        }
+        include: { school: true }
     });
     if (!user) redirect('/');
 
