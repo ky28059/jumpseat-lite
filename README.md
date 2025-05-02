@@ -1,15 +1,13 @@
-# bookings-frontend
+# jumpseat-lite
 
-The frontend for Jumpseat.
+An open-sourced fork of Jumpseat, built using Typescript, Next.js, and Prisma ORM.
 
 ### Running locally
-Create a `.env` in the project root exporting your Postgres database / serpapi key, Next Auth secret, and PostHog keys. This should look something like
+Create a `.env` in the project root exporting your Postgres database / serpapi key and Next Auth secret. This should look something like
 ```env
 DATABASE_URL="postgres://postgres:...@...:5432/postgres"
 AUTH_SECRET=...
 SERP_KEY=...
-NEXT_PUBLIC_POSTHOG_KEY=...
-NEXT_PUBLIC_POSTHOG_HOST=...
 ```
 Run
 ```bash
@@ -25,11 +23,39 @@ npm run dev
 ```
 to start the development server on `localhost:3000`.
 
-The database schema is stored in `/prisma/schema.prisma`. After editing, run
+The database schema is stored in `/prisma/schema.prisma`. After editing this schema, run
 ```bash
 npx prisma migrate dev
 ```
-to push the new schema to the remote database and regenerate client typings.
+to migrate your changes to the remote database and regenerate Prisma's client typings.
+
+### Database setup
+To set up the database on AWS, create an Aurora Postgres database through [RDS](https://us-east-2.console.aws.amazon.com/rds/home).
+
+<!-- insert image -->
+
+Since the frontend is not deployed directly on AWS through EC2, we need to configure the database to accept external
+connections. Follow [this guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_SettingUp_Aurora.html#CHAP_SettingUp_Aurora.SecurityGroup)
+to add a security group in the VPS dashboard that allows inbound connections to `:5432`.
+
+<!-- insert image -->
+
+Once the Aurora database is configured with the above security rule, we'll also need to modify the database *instance* to
+allow public connections: under **Connectivity > Additional configuration** in the instance settings,
+
+<!-- insert image -->
+
+Finally, you should be able to connect to your database externally, e.g. via `psql` with
+```bash
+psql --host=jumpseat.cluster-[...].us-east-2.rds.amazonaws.com --port=5432 --username=postgres
+```
+and your database master password (if you didn't create the database with one, you can always add one via the **Modify** menu).
+
+Set the `DATABASE_URL` in the `.env` as mentioned above, and run
+```bash
+npx prisma migrate dev
+```
+to set up the database with the initial migrations.
 
 ### Scripts
 
