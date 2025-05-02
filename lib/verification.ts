@@ -10,7 +10,7 @@ interface VerifyUserEmailResponse {
     message: string;
 }
 
-async function verifyUserEmail(token: string): Promise<VerifyUserEmailResponse> {
+export async function verifyUserEmail(token: string): Promise<VerifyUserEmailResponse> {
     try {
         const res = await prisma.verificationToken.findFirst({
             where: {
@@ -47,44 +47,7 @@ async function verifyUserEmail(token: string): Promise<VerifyUserEmailResponse> 
     }
 }
 
-async function verifyPersonalEmail(token: string): Promise<VerifyUserEmailResponse> {
-    try {
-        const res = await prisma.verificationToken.findFirst({
-            where: {
-                token: token,
-            },
-        });
-
-        if (!res) {
-            return { success: false, message: "User not found or invalid token." };
-        }
-
-        const hasExpired = new Date(res.expires) < new Date();
-
-        if (hasExpired) {
-            return { success: false, message: "User not found or invalid token." };
-        }
-
-        const user = await prisma.user.findUnique({
-            where: { email: res.email },
-        });
-
-        if (user) {
-            await prisma.user.update({
-                where: { id: user.id },
-                data: { isPersonalEmailVerified: true },
-            });
-            return { success: true, message: "Email verified successfully!" };
-        } else {
-            return { success: false, message: "User not found or invalid token." };
-        }
-    } catch (error) {
-        console.error("Error verifying email:", error);
-        return { success: false, message: "Error verifying email." };
-    }
-}
-
-async function resetPassword(token: string, newPassword: string): Promise<VerifyUserEmailResponse> {
+export async function resetPassword(token: string, newPassword: string): Promise<VerifyUserEmailResponse> {
     try {
         const res = await prisma.verificationToken.findFirst({
             where: {
@@ -121,6 +84,3 @@ async function resetPassword(token: string, newPassword: string): Promise<Verify
         return { success: false, message: "Error resetting password." };
     }
 }
-
-export { verifyUserEmail, resetPassword, verifyPersonalEmail };
-
