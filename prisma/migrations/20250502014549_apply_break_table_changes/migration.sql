@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Break" ALTER COLUMN "endDate" DROP DEFAULT,
+ALTER COLUMN "startDate" DROP DEFAULT;

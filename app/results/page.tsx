@@ -107,7 +107,7 @@ export default async function Results(
         name: s.name,
         value: true,
         iconUrl: s.iconUrl,
-        bookingUrl: s.bookingURL
+        bookingUrl: s.bookingUrl
     }]));
 
     const depRange = [searchParams.depRangeStart ? Number(searchParams.depRangeStart) : 0, searchParams.depRangeEnd ? Number(searchParams.depRangeEnd) : 1440];

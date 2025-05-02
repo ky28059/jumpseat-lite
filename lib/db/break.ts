@@ -15,15 +15,15 @@ import type { Break, BreakType } from "@prisma/client";
 export async function createBreak(
     schoolID: number,
     breakType: BreakType,
-    defaultStartDate: Date,
-    defaultEndDate: Date
+    startDate: Date,
+    endDate: Date
 ) {
     return prisma.break.create({
         data: {
             schoolID,
             breakType,
-            defaultStartDate,
-            defaultEndDate,
+            startDate,
+            endDate,
         },
     });
 }

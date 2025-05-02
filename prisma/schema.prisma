@@ -56,39 +56,28 @@ model BlogPost {
 }
 
 model School {
-  id            Int               @id @default(autoincrement())
-  schoolName    String            @unique
-  airportIatas  String[]
-  externalIatas String[]          @default([])
-  breaks        Break[]
-  shuttles      ShuttleProvider[]
-  users         User[]
+  id           Int               @id @default(autoincrement())
+  schoolName   String            @unique
+  airportIatas String[]
+  breaks       Break[]
+  shuttles     ShuttleProvider[]
+  users        User[]
 }
 
 model Break {
-  id               Int       @id @default(autoincrement())
-  schoolID         Int
-  breakType        BreakType
-  isActive         Boolean   @default(false)
-  defaultEndDate   DateTime  @default(dbgenerated("'1970-01-01'::date")) @db.Date
-  defaultStartDate DateTime  @default(dbgenerated("'1970-01-01'::date")) @db.Date
-  leftEndRange     Int       @default(0)
-  leftStartRange   Int       @default(0)
-  realEndDate      DateTime  @default(dbgenerated("'1970-01-01'::date")) @db.Date
-  realStartDate    DateTime  @default(dbgenerated("'1970-01-01'::date")) @db.Date
-  rightEndRange    Int       @default(0)
-  rightStartRange  Int       @default(0)
-  school           School    @relation(fields: [schoolID], references: [id])
-
-  @@index([isActive])
+  id        Int       @id @default(autoincrement())
+  schoolID  Int
+  breakType BreakType
+  startDate DateTime  @db.Date
+  endDate   DateTime  @db.Date
+  school    School    @relation(fields: [schoolID], references: [id])
 }
 
 model ShuttleProvider {
   id           Int           @id @default(autoincrement())
   name         String
-  isVariable   Boolean
   iconUrl      String?
-  bookingURL   String
+  bookingUrl   String
   schoolID     Int
   school       School        @relation(fields: [schoolID], references: [id])
   shuttleTimes ShuttleTime[]
@@ -103,9 +92,9 @@ model ShuttleTime {
   providerID  Int
   direction   Direction
   airport     String
-  price       Int             @default(0)
-  arrTimeZone String          @default("America/Indianapolis")
+  price       Int
   depTimeZone String          @default("America/Indianapolis")
+  arrTimeZone String          @default("America/Indianapolis")
   // operationalDOW DayOfWeek[]     @default([])
   provider    ShuttleProvider @relation(fields: [providerID], references: [id])
 }

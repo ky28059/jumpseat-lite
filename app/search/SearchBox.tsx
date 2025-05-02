@@ -118,9 +118,9 @@ export default function SearchBox(props: SearchBoxProps) {
         if (initialBreakOption !== "custom") {
             const nextBreak = props.breakDates.find((date) => date.breakType === initialBreakOption);
             if (nextBreak) {
-                setDate({ from: convertTimezone(nextBreak.defaultStartDate), to: convertTimezone(nextBreak.defaultEndDate) });
-                setDepDate(convertTimezone(nextBreak.defaultStartDate));
-                setArrDate(convertTimezone(nextBreak.defaultEndDate));
+                setDate({ from: convertTimezone(nextBreak.startDate), to: convertTimezone(nextBreak.endDate) });
+                setDepDate(convertTimezone(nextBreak.startDate));
+                setArrDate(convertTimezone(nextBreak.endDate));
             }
         }
     }, [props.breakDates, initialBreakOption]);
@@ -155,18 +155,18 @@ export default function SearchBox(props: SearchBoxProps) {
                             </TabsTrigger>
 
                             {props.breakDates
-                                .sort((a, b) => a.defaultStartDate.valueOf() - b.defaultStartDate.valueOf())
+                                .sort((a, b) => a.startDate.valueOf() - b.startDate.valueOf())
                                 .map((b) => (
                                     <TabsTrigger
                                         key={b.id}
                                         value={b.breakType}
                                         onClick={() => {
                                             setBreakOption(b.breakType);
-                                            const newDate = { from: convertTimezone(b.defaultStartDate), to: convertTimezone(b.defaultEndDate) };
+                                            const newDate = { from: convertTimezone(b.startDate), to: convertTimezone(b.endDate) };
                                             console.log(newDate);
-                                            setDate({ from: convertTimezone(b.defaultStartDate), to: convertTimezone(b.defaultEndDate) });
-                                            setDepDate(convertTimezone(b.defaultStartDate));
-                                            setArrDate(convertTimezone(b.defaultEndDate));
+                                            setDate({ from: convertTimezone(b.startDate), to: convertTimezone(b.endDate) });
+                                            setDepDate(convertTimezone(b.startDate));
+                                            setArrDate(convertTimezone(b.endDate));
                                         }}
                                     >
                                         {breakTypeToName(b.breakType)}
@@ -299,12 +299,12 @@ function getNextDate(dates: Break[]): BreakType | "custom" {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const futureDates = dates.filter((date) => date.defaultStartDate > today);
+    const futureDates = dates.filter((date) => date.startDate > today);
     if (futureDates.length === 0) return "custom";
 
     let nextDate = futureDates[0];
     for (let date of futureDates) {
-        if (date.defaultStartDate < nextDate.defaultStartDate) {
+        if (date.startDate < nextDate.startDate) {
             nextDate = date;
         }
     }
