@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 
 // Components
 import FlightSearchBar from "@/app/(landing)/FlightSearchBar";
@@ -8,12 +8,13 @@ import SchoolSelector from "@/components/SchoolSelector";
 
 // Utils
 import { airportLocationMap } from "@/lib/airports";
-import { hostToConfig, schoolConfigs } from "@/lib/schools";
+import { schoolToConfig, schoolConfigs } from "@/lib/schools";
+import { SCHOOL_COOKIE_NAME } from '@/lib/config';
 
 
 export default function Heading() {
-    const host = headers().get("Host");
-    const config = hostToConfig(host);
+    const school = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const config = schoolToConfig(school);
 
     const initialDelay = 300;
     const visible = 600;
@@ -31,7 +32,7 @@ export default function Heading() {
 
             <div className="relative container mx-0 select-none pointer-events-none -mt-8 sm:-mt-4">
                 <SchoolSelector
-                    host={host}
+                    school={school}
                     placeholder="No school selected"
                 />
 
@@ -61,7 +62,7 @@ export default function Heading() {
                     We’re a travel platform for college students, built by college students.
                 </h3>
 
-                <FlightSearchBar airportLocs={Object.entries(airportLocationMap)} host={host} />
+                <FlightSearchBar airportLocs={Object.entries(airportLocationMap)} school={school} />
             </div>
         </header>
     );

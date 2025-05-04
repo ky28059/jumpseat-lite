@@ -26,7 +26,7 @@ import type { ResultsParams } from "@/app/results/page";
 import type { Airport } from "@/lib/airports";
 import { Break, BreakType, Direction } from "@prisma/client";
 import { cn } from "@/lib/utils";
-import { hostToConfig } from "@/lib/schools";
+import { schoolToConfig } from "@/lib/schools";
 
 
 // TODO?
@@ -38,13 +38,13 @@ type SearchBoxProps = {
     breakDates: Break[],
     airportLocs: [string, Airport[]][],
     dest: Set<string>,
-    host: string | null,
+    school: string | undefined,
     setDest: (newDest: Set<string>) => void,
     direction: Direction,
     setDirection: (arg0: Direction) => void,
 }
 export default function SearchBox(props: SearchBoxProps) {
-    const config = hostToConfig(props.host);
+    const config = schoolToConfig(props.school);
     const [numCarryOn, setNumCarryOn] = useState(0);
     const [numCheckIn, setNumCheckIn] = useState(0);
 
@@ -204,7 +204,7 @@ export default function SearchBox(props: SearchBoxProps) {
                             "py-2 px-3 gap-1 rounded bg-[#f6f9fc] dark:bg-[#333333] h-auto w-full focus:outline-none !m-0 border-0 text-base",
                             !config && "text-secondary"
                         )}
-                        host={props.host}
+                        school={props.school}
                         placeholder={swapped ? "To?" : "From?"}
                     />
                 </div>
@@ -214,7 +214,7 @@ export default function SearchBox(props: SearchBoxProps) {
                     dest={props.dest}
                     placeholder={swapped ? "From?" : "To?"}
                     setDest={props.setDest}
-                    host={props.host}
+                    school={props.school}
                 />
             </div>
 

@@ -4,13 +4,13 @@ import { cookies, headers } from 'next/headers';
 import Map from '@/components/map';
 
 // Utils
-import { hostToConfig } from '@/lib/schools';
-import { THEME_COOKIE_NAME } from "@/lib/config";
+import { schoolToConfig } from '@/lib/schools';
+import { SCHOOL_COOKIE_NAME, THEME_COOKIE_NAME } from "@/lib/config";
 
 
 export default function ShuttleMap() {
-    const host = headers().get('Host');
-    const config = hostToConfig(host);
+    const school = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const config = schoolToConfig(school);
     const theme = cookies().get(THEME_COOKIE_NAME)?.value;
 
     // TODO: default lat / long?

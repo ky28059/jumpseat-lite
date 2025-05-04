@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { headers } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from "next/navigation";
 
 // Components
@@ -7,8 +7,9 @@ import ResultsContent from "@/app/results/ResultsContent";
 
 // Utils
 import type { Direction } from '@prisma/client';
+import { SCHOOL_COOKIE_NAME } from '@/lib/config';
 import { airportLocationMap, airportMap } from "@/lib/airports";
-import { hostToConfig } from '@/lib/schools';
+import { schoolToConfig } from '@/lib/schools';
 import { getSchoolByName } from '@/lib/db/school';
 import { auth } from "@/auth";
 
@@ -41,8 +42,8 @@ export async function generateMetadata(
     if (searchParams.direction !== 'toSchool' && searchParams.direction !== 'fromSchool')
         return {};
 
-    const host = headers().get("Host");
-    const config = hostToConfig(host);
+    const school = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const config = schoolToConfig(school);
     if (!config) return {};
 
     const extAirports = searchParams.extAirports.split(",");
@@ -81,8 +82,8 @@ export default async function Results(
         redirect("/search");
 
     // Get the school for this search
-    const host = headers().get("Host");
-    const config = hostToConfig(host);
+    const schoolId = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const config = schoolToConfig(schoolId);
     if (!config)
         redirect("/search");
 

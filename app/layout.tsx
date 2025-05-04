@@ -10,8 +10,8 @@ import Footer from "@/app/Footer";
 // Utils
 import { cn } from "@/lib/utils";
 import { auth } from "@/auth";
-import { THEME_COOKIE_NAME } from "@/lib/config";
-import { hostToConfig } from "@/lib/schools";
+import { SCHOOL_COOKIE_NAME, THEME_COOKIE_NAME } from "@/lib/config";
+import { schoolToConfig } from "@/lib/schools";
 
 import "./globals.css";
 
@@ -33,8 +33,8 @@ export default async function RootLayout(props: { children: ReactNode }) {
     // ensure that they aren't using a school account
     if (session?.user?.email?.endsWith(".edu")) session = null;
 
-    const host = headers().get("Host");
-    const config = hostToConfig(host);
+    const host = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const config = schoolToConfig(host);
 
     return (
         <html

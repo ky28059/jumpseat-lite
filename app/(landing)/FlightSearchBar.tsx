@@ -15,7 +15,7 @@ import type { Airport } from '@/lib/airports';
 
 type FlightSearchBarProps = {
     airportLocs: [string, Airport[]][],
-    host: string | null
+    school: string | undefined
 }
 export default function FlightSearchBar(props: FlightSearchBarProps) {
     const [dest, setDest] = useState(new Set<string>());
@@ -41,7 +41,7 @@ export default function FlightSearchBar(props: FlightSearchBarProps) {
                     placeholder="San Francisco, CA"
                     dest={dest}
                     setDest={setDest}
-                    host={props.host}
+                    school={props.school}
                     onLanding
                 />
                 <button

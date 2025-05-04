@@ -18,7 +18,7 @@ type HomeAirportSelectorProps = {
     airports: Set<string>,
     airportLocs: [string, Airport[]][],
     schoolAirports?: string[],
-    host: string | null
+    school: string | undefined
 }
 export default function HomeAirportSelector(props: HomeAirportSelectorProps) {
     const [iatas, setIatas] = useState(props.airports);
@@ -53,7 +53,7 @@ export default function HomeAirportSelector(props: HomeAirportSelectorProps) {
                         placeholder="Search"
                         className="py-1.5"
                         airportLocs={props.airportLocs}
-                        host={props.host}
+                        school={props.school}
                     />
                 ) : airports.length === 0 ? (
                     <p className="text-secondary">

@@ -11,8 +11,8 @@ import { FaBus, FaUserFriends } from "react-icons/fa";
 
 // Utils
 import { getBreaksBySchoolName } from "@/lib/db/school";
-import { hostToConfig } from "@/lib/schools";
-import { THEME_COOKIE_NAME } from "@/lib/config";
+import { schoolToConfig } from "@/lib/schools";
+import { SCHOOL_COOKIE_NAME, THEME_COOKIE_NAME } from "@/lib/config";
 import { airportLocationMap, airportMap } from "@/lib/airports";
 import { auth } from "@/auth";
 import prisma from "@/lib/db/prisma";
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Search({ searchParams }: { searchParams: { to?: string } }) {
-    const host = headers().get("Host");
-    const config = hostToConfig(host);
+    const school = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const config = schoolToConfig(school);
     const theme = cookies().get(THEME_COOKIE_NAME)?.value;
 
     // Fetch break dates for the given school.
@@ -60,7 +60,7 @@ export default async function Search({ searchParams }: { searchParams: { to?: st
                 breaks={breaks}
                 config={config}
                 defaultDest={await getPrefilledToDest()}
-                host={host}
+                school={school}
                 airportMap={airportMap}
                 airportLocationMap={airportLocationMap}
                 theme={theme}

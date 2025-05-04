@@ -1,28 +1,32 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // Components
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger } from "@/components/ui/select";
 
 // Utils
-import { hostToConfig, schoolConfigs } from "@/lib/schools";
+import { schoolToConfig, schoolConfigs } from "@/lib/schools";
 import { cn } from "@/lib/utils";
+import { SCHOOL_COOKIE_NAME } from '@/lib/config';
 
 
 type SchoolSelectorProps = {
-    host: string | null,
+    school: string | undefined,
     className?: string,
     placeholder: string,
 };
 export default function SchoolSelector(props: SchoolSelectorProps) {
-    const config = hostToConfig(props.host);
-    const pathname = usePathname();
+    const config = schoolToConfig(props.school);
+    const router = useRouter();
 
     return (
         <Select
-            value={"balls"} //props.host ?? undefined
-            onValueChange={(h) => (window.location.href = `https://${h}${pathname}`)}
+            defaultValue={props.school ?? 'purdue'}
+            onValueChange={(h) => {
+                document.cookie = `${SCHOOL_COOKIE_NAME}=${h}`;
+                router.refresh();
+            }}
         >
             <SelectTrigger
                 className={cn(
@@ -36,8 +40,8 @@ export default function SchoolSelector(props: SchoolSelectorProps) {
 
             <SelectContent>
                 <SelectGroup>
-                    {Object.entries(schoolConfigs).map(([host, c]) => (
-                        <SelectItem value={host} key={host}>
+                    {Object.entries(schoolConfigs).map(([id, c]) => (
+                        <SelectItem value={id} key={id}>
                             {c.name}
                         </SelectItem>
                     ))}
@@ -46,4 +50,3 @@ export default function SchoolSelector(props: SchoolSelectorProps) {
         </Select>
     );
 }
-

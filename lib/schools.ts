@@ -10,7 +10,7 @@ export type SchoolConfig = {
 }
 
 export const schoolConfigs: { [key: string]: SchoolConfig } = {
-    'purdue.jumpseatapp.com': {
+    'purdue': {
         name: 'Purdue',
         nameLong: "Purdue University",
         coordinates: [40.4237095, -86.9237695],
@@ -20,7 +20,7 @@ export const schoolConfigs: { [key: string]: SchoolConfig } = {
         dbID: 1,
         excludedAirports: ["ORD", "IND", "MDW"]
     },
-    'iu.jumpseatapp.com': {
+    'iu': {
         name: 'IU',
         nameLong: "Indiana University",
         coordinates: [39.7739331, -86.1788355],
@@ -30,7 +30,7 @@ export const schoolConfigs: { [key: string]: SchoolConfig } = {
         dbID: 2,
         excludedAirports: ["ORD", "IND", "MDW"]
     },
-    'uiuc.jumpseatapp.com': {
+    'uiuc': {
         name: 'UIUC',
         nameLong: "University of Illinois Urbana-Champaign",
         coordinates: [40.1019564, -88.2297364],
@@ -52,11 +52,7 @@ export const schoolConfigs: { [key: string]: SchoolConfig } = {
     // },
 }
 
-export function hostToConfig(host: string | null) {
-    // Dev override for testing purposes
-    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
-        return schoolConfigs['purdue.jumpseatapp.com']
-
-    if (!host) return;
-    return schoolConfigs[host];
+export function schoolToConfig(cookie: string | undefined) {
+    if (!cookie) return schoolConfigs['purdue'];
+    return schoolConfigs[cookie];
 }

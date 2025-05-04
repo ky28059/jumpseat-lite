@@ -1,6 +1,9 @@
 import { z } from "zod";
 
+
 export const THEME_COOKIE_NAME = 'theme';
+export const SCHOOL_COOKIE_NAME = 'school';
+
 
 export const firstNameSchema = z.string().min(1, {
     message: 'First name cannot be empty.'

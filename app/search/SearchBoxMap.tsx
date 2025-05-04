@@ -15,7 +15,7 @@ import { Break, Direction } from "@prisma/client";
 type SearchBoxMapProps = {
     breaks: Break[],
     defaultDest?: Set<string>,
-    host: string | null,
+    school: string | undefined,
     config: SchoolConfig | undefined,
     airportLocationMap: { [loc: string]: Airport[] },
     airportMap: { [iata: string]: Airport },
@@ -25,7 +25,7 @@ type SearchBoxMapProps = {
 export default function SearchBoxMap({
     breaks,
     defaultDest,
-    host,
+    school,
     config,
     airportLocationMap,
     airportMap,
@@ -55,7 +55,7 @@ export default function SearchBoxMap({
                 airportLocs={Object.entries(airportLocationMap)}
                 breakDates={breaks}
                 dest={dest}
-                host={host}
+                school={school}
                 setDest={handleChangeDest}
                 direction={direction}
                 setDirection={setDirection}

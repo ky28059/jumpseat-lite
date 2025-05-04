@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { headers } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 // Components
 import AccountContent from '@/app/account/AccountContent';
@@ -11,6 +11,7 @@ import AccountSignOutButton from '@/app/account/AccountSignOutButton';
 import prisma from '@/lib/db/prisma';
 import { auth } from '@/auth';
 import { airportLocationMap } from '@/lib/airports';
+import { SCHOOL_COOKIE_NAME } from '@/lib/config';
 
 
 export const metadata: Metadata = {
@@ -19,9 +20,10 @@ export const metadata: Metadata = {
 
 export default async function AccountPage() {
     // Redirect to home if the user is not logged in
-    const host = headers().get("Host");
     const session = await auth();
     if (!session?.user.id) redirect('/');
+
+    const host = cookies().get(SCHOOL_COOKIE_NAME)?.value;
 
     const user = await prisma.user.findUnique({
         where: { id: Number(session.user.id) },
@@ -45,7 +47,7 @@ export default async function AccountPage() {
                     airports={new Set(user.airports)}
                     airportLocs={Object.entries(airportLocationMap)}
                     schoolAirports={user.school?.airportIatas}
-                    host={host}
+                    school={host}
                 />
             </div>
 

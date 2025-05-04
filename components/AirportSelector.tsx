@@ -22,7 +22,7 @@ import { RxCross2 } from "react-icons/rx";
 import type { Airport } from '@/lib/airports';
 import { cn } from '@/lib/utils';
 import { FaLocationDot } from 'react-icons/fa6';
-import { hostToConfig } from '@/lib/schools';
+import { schoolToConfig } from '@/lib/schools';
 
 
 type AirportSelectorProps = {
@@ -36,11 +36,11 @@ type AirportSelectorProps = {
 
     className?: string,
     popoverClassname?: string,
-    host: string | null,
+    school: string | undefined,
     onLanding?: boolean
 }
 export default function AirportSelector(props: AirportSelectorProps) {
-    const excludedAirports = hostToConfig(props.host)?.excludedAirports ?? [];
+    const excludedAirports = schoolToConfig(props.school)?.excludedAirports ?? [];
 
     const [query, setQuery] = useState("");
     const [open, setOpen] = useState(false);
