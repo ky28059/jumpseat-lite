@@ -50,12 +50,6 @@ export default function NavBar(props: NavBarProps) {
                 Search
             </NavLink>
 
-            {/*
-            <NavLink href="/social">
-                Social
-            </NavLink>
-            */}
-
             <NavigationMenu className="hidden lg:block">
                 <NavigationMenuList>
                     <NavigationMenuItem>
@@ -73,16 +67,6 @@ export default function NavBar(props: NavBarProps) {
                                 Blog
                             </NavDropdownLink>
                             */}
-
-                            <a
-                                // TODO
-                                className="py-1.5 px-3 mr-[2px] text-secondary hover:text-primary hover:bg-tertiary/40 rounded transition duration-200 text-sm"
-                                href="https://portal.jumpseatapp.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Portal
-                            </a>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                 </NavigationMenuList>

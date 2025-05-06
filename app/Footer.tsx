@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 // Icons
 import type { IconType } from 'react-icons';
-import { FaEnvelope, FaLinkedin, FaInstagram } from 'react-icons/fa6';
+import { FaGithub } from 'react-icons/fa6';
 
 
 export default function Footer() {
@@ -17,16 +17,8 @@ export default function Footer() {
                 <div className="flex flex-col sm:flex-row gap-x-20 gap-y-4 mb-8">
                     <div className="flex sm:flex-col gap-1">
                         <FooterSocialIcon
-                            href="mailto:team@jumpseatapp.com"
-                            icon={FaEnvelope}
-                        />
-                        <FooterSocialIcon
-                            href="https://www.linkedin.com/company/campus-ventures-travel/"
-                            icon={FaLinkedin}
-                        />
-                        <FooterSocialIcon
-                            href="https://www.instagram.com/jumpseatapp/"
-                            icon={FaInstagram}
+                            href="https://github.com/ky28059/jumpseat-lite"
+                            icon={FaGithub}
                         />
                     </div>
 
@@ -35,8 +27,6 @@ export default function Footer() {
                             <h5 className="mb-3 font-semibold">Product</h5>
                             <ul className="flex flex-col gap-1.5 text-sm">
                                 <FooterInternalLink href="/search">Search</FooterInternalLink>
-                                <FooterExternalLink href="https://portal.jumpseatapp.com/">Portal</FooterExternalLink>
-                                {/* <FooterInternalLink href="/social">Social</FooterInternalLink> */}
                             </ul>
                         </div>
 
