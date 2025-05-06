@@ -195,7 +195,183 @@ const lafLimoRoutes = [{
     arrTimeZone: 'America/Indianapolis',
 }];
 
-const reindeerRoutes = [];
+const reindeerRoutes = [{
+    direction: Direction.fromSchool,
+    airport: 'ORD',
+    depTime: new Date('1970-01-01T06:15Z'),
+    arrTime: new Date('1970-01-01T08:45Z'),
+    price: 55,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Chicago',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'ORD',
+    depTime: new Date('1970-01-01T10:15Z'),
+    arrTime: new Date('1970-01-01T12:45Z'),
+    price: 55,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Chicago',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'ORD',
+    depTime: new Date('1970-01-01T14:15Z'),
+    arrTime: new Date('1970-01-01T16:45Z'),
+    price: 55,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Chicago',
+}, {
+    direction: Direction.toSchool,
+    airport: 'ORD',
+    depTime: new Date('1970-01-01T09:15Z'),
+    arrTime: new Date('1970-01-01T13:30Z'),
+    price: 55,
+    depTimeZone: 'America/Chicago',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'ORD',
+    depTime: new Date('1970-01-01T13:15Z'),
+    arrTime: new Date('1970-01-01T17:30Z'),
+    price: 55,
+    depTimeZone: 'America/Chicago',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'ORD',
+    depTime: new Date('1970-01-01T17:15Z'),
+    arrTime: new Date('1970-01-01T21:30Z'),
+    price: 55,
+    depTimeZone: 'America/Chicago',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T05:15Z'),
+    arrTime: new Date('1970-01-01T07:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T07:15Z'),
+    arrTime: new Date('1970-01-01T09:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T09:15Z'),
+    arrTime: new Date('1970-01-01T11:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T11:15Z'),
+    arrTime: new Date('1970-01-01T13:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T13:15Z'),
+    arrTime: new Date('1970-01-01T15:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T15:15Z'),
+    arrTime: new Date('1970-01-01T17:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T17:15Z'),
+    arrTime: new Date('1970-01-01T19:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.fromSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T19:15Z'),
+    arrTime: new Date('1970-01-01T21:15Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T07:15Z'),
+    arrTime: new Date('1970-01-01T08:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T09:15Z'),
+    arrTime: new Date('1970-01-01T10:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T11:15Z'),
+    arrTime: new Date('1970-01-01T12:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T13:15Z'),
+    arrTime: new Date('1970-01-01T14:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T15:15Z'),
+    arrTime: new Date('1970-01-01T16:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T17:15Z'),
+    arrTime: new Date('1970-01-01T18:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T19:15Z'),
+    arrTime: new Date('1970-01-01T20:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}, {
+    direction: Direction.toSchool,
+    airport: 'IND',
+    depTime: new Date('1970-01-01T21:15Z'),
+    arrTime: new Date('1970-01-01T22:50Z'),
+    price: 27,
+    depTimeZone: 'America/Indianapolis',
+    arrTimeZone: 'America/Indianapolis',
+}];
 
 ;(async () => {
     const prisma = new PrismaClient();
@@ -204,7 +380,9 @@ const reindeerRoutes = [];
     const schoolName = 'Purdue';
     const school = await prisma.school.findFirst({ where: { schoolName } });
 
-    await prisma.shuttleTime.deleteMany(); // TODO?
+    await prisma.shuttleTime.deleteMany({
+        where: { provider: { is: { schoolID: school.id } } }
+    });
 
     const lafData = {
         school: { connect: { id: school.id } },
