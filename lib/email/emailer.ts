@@ -47,10 +47,6 @@ const generateVerificationLink = (baseUrl: string, token: string, school: string
     return `https://${school}.${baseUrl}/verify/verify?token=${token}`;
 };
 
-const generateVerificationLinkPersonal = (baseUrl: string, token: string, school: string): string => {
-    return `https://${school}.${baseUrl}/verifyPersonal/verifyPersonal?token=${token}`;
-};
-
 const generateResetLink = (baseUrl: string, token: string, school: string): string => {
     return `https://${school}.${baseUrl}/passwordReset/passwordReset?token=${token}`;
 };

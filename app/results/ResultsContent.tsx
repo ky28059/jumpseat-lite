@@ -38,7 +38,6 @@ type ResultsContentProps = {
 
     carryCnt: number,
     checkCnt: number,
-    schoolID: number,
     userID?: number
 };
 export default function ResultsContent(props: ResultsContentProps) {

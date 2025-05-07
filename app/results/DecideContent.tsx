@@ -30,8 +30,7 @@ type DecideContentProps = {
 
     hidden: boolean,
     return?: boolean,
-    depShuttleIndex?: number,
-    schoolID: number
+    depShuttleIndex?: number
 }
 
 export default function DecideContent(props: DecideContentProps) {

@@ -144,7 +144,6 @@ export default async function Results(
 
                 carryCnt={carryCnt}
                 checkCnt={checkCnt}
-                schoolID={config.dbID}
                 userID={userID}
             />
         </div>
