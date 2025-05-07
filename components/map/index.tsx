@@ -18,7 +18,7 @@ type MapProps = {
 const Map: FC<MapProps> = (props) => {
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
-        googleMapsApiKey: "AIzaSyCQpn22SpB96Z_kNYnuiUD9L-NszkIImB4",
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!,
     });
 
     const [isDarkMode, setIsDarkMode] = useState(props.theme === "dark");

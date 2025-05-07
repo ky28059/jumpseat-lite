@@ -3,11 +3,12 @@
 An open-sourced fork of Jumpseat, built using Typescript, Next.js, and Prisma ORM.
 
 ### Running locally
-Create a `.env` in the project root exporting your Postgres database / serpapi key and Next Auth secret. This should look something like
+Create a `.env` in the project root exporting your Postgres database / serpapi key, Google Maps key, and Next Auth secret. This should look something like
 ```env
 DATABASE_URL="postgres://postgres:...@...:5432/postgres"
 AUTH_SECRET=...
 SERP_KEY=...
+NEXT_PUBLIC_GOOGLE_MAPS_KEY=...
 ```
 Run
 ```bash
@@ -28,6 +29,12 @@ The database schema is stored in `/prisma/schema.prisma`. After editing this sch
 npx prisma migrate dev
 ```
 to migrate your changes to the remote database and regenerate Prisma's client typings.
+
+### Google Maps setup
+To generate a Google Maps key, go to [Google Cloud console](https://console.cloud.google.com/) and create a new project.
+Under **APIs & Services**, enable the **Maps Javascript API**:
+
+![image](https://github.com/user-attachments/assets/fca1aebc-1e60-4f00-8650-7ef2609b4416)
 
 ### Database setup
 To set up the database on AWS, create an Aurora Postgres database through [RDS](https://us-east-2.console.aws.amazon.com/rds/home).
