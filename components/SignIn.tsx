@@ -62,16 +62,14 @@ export default function LoginContent(config: PasswordResetProps) {
                     const ret = await signInAction(formData);
                     setIsLoading(false);
 
-                    if (verified.error == "User not found.") return setErrorMessage("User not found.");
+                    if (verified.error == "User not found.")
+                        return setErrorMessage("User not found.");
+                    if (!verified.ok)
+                        return setErrorMessage("Your email is not verified. Please check your inbox.");
+                    if (ret.error)
+                        return setErrorMessage("Incorrect email or password.");
 
-                    if (!verified.ok) return setErrorMessage("Your email is not verified. Please check your inbox.");
-
-                    if (ret.error) return setErrorMessage("Incorrect email or password.");
-
-                    if (verified.user?.schoolID != config.config.dbID) {
-                        const realSchoolName = idToSchool[verified.user?.schoolID!];
-                        return setErrorMessage(`This is a ${realSchoolName} account. Please sign in at ${realSchoolName.toLowerCase()}.jumpseatapp.com.`)
-                    }
+                    // TODO: set school cookie automatically?
 
                     router.push("/account");
                 }}
