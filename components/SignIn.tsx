@@ -32,6 +32,8 @@ export default function LoginContent(config: PasswordResetProps) {
             return setErrorMessage("Incorrect email or password.");
         }
 
+        // TODO: set school cookie automatically?
+
         router.push("/account");
     };
 
@@ -44,30 +46,7 @@ export default function LoginContent(config: PasswordResetProps) {
 
             <form
                 className="space-y-3"
-                action={async (formData) => {
-                    setIsLoading(true);
-                    const email = formData.get("email") as string;
-
-                    if (email.endsWith(".edu")) {
-                        setIsLoading(false);
-                        return setErrorMessage("Due to issues with university email servers, we no longer support school emails. Please create a new account with a personal email.")
-                    }
-
-                    const verified = await checkVerified(email);
-                    const ret = await signInAction(formData);
-                    setIsLoading(false);
-
-                    if (verified.error == "User not found.")
-                        return setErrorMessage("User not found.");
-                    if (!verified.ok)
-                        return setErrorMessage("Your email is not verified. Please check your inbox.");
-                    if (ret.error)
-                        return setErrorMessage("Incorrect email or password.");
-
-                    // TODO: set school cookie automatically?
-
-                    router.push("/account");
-                }}
+                action={handleSignIn}
             >
                 <div className="space-y-1">
                     <Label htmlFor="email">Email</Label>

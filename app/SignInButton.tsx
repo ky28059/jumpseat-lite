@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 // Components
@@ -19,10 +19,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 
 type SignInButtonProps = {
-    config?: SchoolConfig,
-    hasTrigger?: boolean,
-    isOpen?: boolean,
-    setIsOpen?: Dispatch<SetStateAction<boolean>>
+    config?: SchoolConfig
 }
 
 export default function SignInButton(props: SignInButtonProps) {
@@ -30,10 +27,6 @@ export default function SignInButton(props: SignInButtonProps) {
     const [isEmailVerify, setIsEmailVerify] = useState(false);
     const [isPasswordReset, setIsPasswordReset] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const trueIsOpen = props.isOpen ?? isOpen;
-    const trueSetIsOpen = props.setIsOpen ?? setIsOpen;
-    const [isEmailVerificationOpen, setIsEmailVerificationOpen] = useState(false);
-    const needsTrigger = props.hasTrigger ?? true;
 
     // const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -64,23 +57,20 @@ export default function SignInButton(props: SignInButtonProps) {
     };
 
     const handleEmailVerificationClose = () => {
-        setIsEmailVerificationOpen(false);
-        trueSetIsOpen(false);
+        setIsOpen(false);
     };
 
     return (
-        <Dialog open={trueIsOpen} onOpenChange={trueSetIsOpen}>
-            {needsTrigger && 
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
                 <button
-                    onClick={() => trueSetIsOpen(true)}
+                    onClick={() => setIsOpen(true)}
                     className="px-4 py-1.5 rounded-full bg-black text-white font-medium text-sm flex gap-2 items-center"
                 >
                     <FaUserCircle />
                     Sign in
                 </button>
             </DialogTrigger>
-            }
 
             <DialogContent className="px-8">
                 {!props.config?.name ? (
@@ -110,7 +100,6 @@ export default function SignInButton(props: SignInButtonProps) {
                                     config={props.config}
                                     onOpenChange={setIsOpen}
                                     onEmailVerificationClose={handleEmailVerificationClose}
-                                    setIsEmailVerificationOpen={setIsEmailVerificationOpen}
                                 />
                             ) : (
                                 <LoginContent config={props.config} />

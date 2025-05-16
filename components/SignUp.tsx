@@ -31,15 +31,9 @@ type SignUpProps = {
     config?: SchoolConfig;
     onOpenChange?(open: boolean): void;
     onEmailVerificationClose?(): void;
-    setIsEmailVerificationOpen(open: boolean): void;
 };
 
-export default function SignUp({
-    config,
-    onOpenChange,
-    onEmailVerificationClose,
-    setIsEmailVerificationOpen,
-}: SignUpProps) {
+export default function SignUp({ config }: SignUpProps) {
     const [errorMessage, setErrorMessage] = useState("");
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [userEmail, setUserEmail] = useState("");
@@ -49,22 +43,17 @@ export default function SignUp({
     });
 
     async function handleSubmit(data: z.infer<typeof FormSchema>) {
-        const emailDomain = data.email.split("@")[1];
-
-        if (config?.email && emailDomain.endsWith(".edu")) {
-            return setErrorMessage(`Due to issues with university email servers, we no longer support school emails. Please create your account with a personal email.`);
-        }
-
         const res = await createUser(data.email, data.password, config?.name!);
         if (res.error) return setErrorMessage(res.error);
 
         setIsDialogOpen(true);
-        setIsEmailVerificationOpen(true); // Open the email verification dialog
+        // setIsEmailVerificationOpen(true); // Open the email verification dialog
         setUserEmail(data.email);
     }
 
     return (
         <>
+            {/*
             <EmailVerificationDialog
                 isOpen={isDialogOpen}
                 onClose={() => {
@@ -74,6 +63,7 @@ export default function SignUp({
                 config={config!}
                 email={userEmail}
             />
+            */}
 
             {!isDialogOpen && (
                 <>
@@ -140,18 +130,6 @@ export default function SignUp({
                                     </FormItem>
                                 )}
                             />
-                            {/*
-                    <div className="text-xs mx-2 mt-1">
-                        Password Requirements:
-                        <ul className="list-disc ml-5">
-                            <li>At least 8 characters long</li>
-                            <li>At least one uppercase letter</li>
-                            <li>At least one lowercase letter</li>
-                            <li>At least one number</li>
-                            <li>At least one special character</li>
-                        </ul>
-                    </div>
-                    */}
                             <FormField
                                 control={form.control}
                                 name="confirmPassword"
