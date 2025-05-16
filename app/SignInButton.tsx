@@ -22,10 +22,15 @@ type SignInButtonProps = {
     config?: SchoolConfig
 }
 
+enum SignInDisplay {
+    SIGN_IN,
+    SIGN_UP,
+    VERIFY_EMAIL,
+    RESET_PASSWORD,
+}
+
 export default function SignInButton(props: SignInButtonProps) {
-    const [isSignUp, setIsSignUp] = useState(false);
-    const [isEmailVerify, setIsEmailVerify] = useState(false);
-    const [isPasswordReset, setIsPasswordReset] = useState(false);
+    const [display, setDisplay] = useState(SignInDisplay.SIGN_IN);
     const [isOpen, setIsOpen] = useState(false);
 
     // const searchParams = useSearchParams();
@@ -34,23 +39,6 @@ export default function SignInButton(props: SignInButtonProps) {
     // useEffect(() => {
     //     setIsOpen(searchParams.get("showModal") === "true");
     // }, [searchParams]);
-
-    const toggleSignUp = () => {
-        setIsSignUp(!isSignUp);
-        setIsEmailVerify(false);
-        setIsPasswordReset(false);
-    };
-
-    const toggleEmailVerify = () => {
-        setIsEmailVerify(!isEmailVerify);
-        setIsPasswordReset(false);
-    };
-
-    const togglePasswordReset = () => {
-        setIsPasswordReset(!isPasswordReset);
-        setIsSignUp(false);
-        setIsEmailVerify(false);
-    };
 
     const handleSchoolSelect = (domain: string) => {
         window.location.href = `https://${domain}/${pathname}?showModal=true`;
@@ -92,40 +80,35 @@ export default function SignInButton(props: SignInButtonProps) {
                     </>
                 ) : (
                     <>
-                        {isPasswordReset ? (
-                            <PasswordReset config={props.config} />
-                        ) : !isEmailVerify ? (
-                            isSignUp ? (
-                                <SignupContent
-                                    config={props.config}
-                                    onOpenChange={setIsOpen}
-                                    onEmailVerificationClose={handleEmailVerificationClose}
-                                />
-                            ) : (
-                                <LoginContent config={props.config} />
-                            )
-                        ) : (
+                        {display === SignInDisplay.SIGN_IN ? (
+                            <LoginContent config={props.config} />
+                        ) : display === SignInDisplay.SIGN_UP ? (
+                            <SignupContent
+                                config={props.config}
+                                onOpenChange={setIsOpen}
+                                onEmailVerificationClose={handleEmailVerificationClose}
+                            />
+                        ) : display === SignInDisplay.VERIFY_EMAIL ? (
                             <VerificationContent config={props.config}/>
+                        ) : (
+                            <PasswordReset config={props.config} />
                         )}
 
-                        {!isEmailVerify && !isPasswordReset && (
-                            <button className="text-blue-500 hover:underline mt-2 text-sm" onClick={toggleSignUp}>
-                                {isSignUp ? "Already have an account?" : "Don't have an account?"}
-                            </button>
-                        )}
-
-                        {!isSignUp && !isPasswordReset && (
-                            <button className="text-blue-500 hover:underline mt-2 text-sm" onClick={toggleEmailVerify}>
-                                {isEmailVerify ? "Go back to sign in" : "Need another verification email?"}
-                            </button>
-                        )}
-
-                        {!isSignUp && !isEmailVerify && (
+                        {display === SignInDisplay.SIGN_IN && (
                             <button
                                 className="text-blue-500 hover:underline mt-2 text-sm"
-                                onClick={togglePasswordReset}
+                                onClick={() => setDisplay(SignInDisplay.SIGN_UP)}
                             >
-                                {isPasswordReset ? "Go back to sign in" : "Forgot your password?"}
+                                Don't have an account?
+                            </button>
+                        )}
+
+                        {display === SignInDisplay.SIGN_UP && (
+                            <button
+                                className="text-blue-500 hover:underline mt-2 text-sm"
+                                onClick={() => setDisplay(SignInDisplay.SIGN_IN)}
+                            >
+                                Already have an account?
                             </button>
                         )}
                     </>
