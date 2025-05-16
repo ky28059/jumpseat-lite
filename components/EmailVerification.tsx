@@ -1,22 +1,25 @@
 import { Dialog, DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { sendVerificationEmail } from "@/lib/email/emailer";
-import { SchoolConfig } from "@/lib/schools";
 
-interface EmailVerificationProps {
-    isOpen: boolean;
-    onClose: () => void;
-    config: SchoolConfig;
-    email: string;
+// Utils
+// import { sendVerificationEmail } from "@/lib/email/emailer";
+import type { SchoolConfig } from "@/lib/schools";
+
+
+type EmailVerificationProps = {
+    isOpen: boolean,
+    onClose: () => void,
+    config: SchoolConfig,
+    email: string,
 }
 
 export default function EmailVerification({ isOpen, onClose, config, email }: EmailVerificationProps) {
-    const router = useRouter();
     if (!isOpen) return null;
+
     const resendVerification = () => {
-        sendVerificationEmail(email, config.name);
+        // sendVerificationEmail(email, config.name);
     };
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogHeader>
@@ -36,4 +39,3 @@ export default function EmailVerification({ isOpen, onClose, config, email }: Em
         </Dialog>
     );
 }
-

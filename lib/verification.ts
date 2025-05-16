@@ -12,11 +12,7 @@ interface VerifyUserEmailResponse {
 
 export async function verifyUserEmail(token: string): Promise<VerifyUserEmailResponse> {
     try {
-        const res = await prisma.verificationToken.findFirst({
-            where: {
-                token: token,
-            },
-        });
+        const res = await prisma.verificationToken.findFirst({ where: { token } });
 
         if (!res) {
             return { success: false, message: "User not found or invalid token." };

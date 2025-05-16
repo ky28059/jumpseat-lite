@@ -3,11 +3,11 @@
 import prisma from "@/lib/db/prisma";
 import bcrypt from "bcrypt";
 import { AuthError } from "next-auth";
-import { sendVerificationEmail } from "@/lib/email/emailer";
 
 // Utils
 import { emailSchema, passwordSchema } from "@/lib/config";
 import { signIn, signOut } from "@/auth";
+
 
 /**
  * Creates a user in the database with the given email, password, and name.
@@ -18,10 +18,10 @@ import { signIn, signOut } from "@/auth";
  * @returns An error message, or a success indicator.
  */
 export async function createUser(email: string, password: string, schoolName: string) {
-    if (!emailSchema.safeParse(email).success) return { error: "Email is invalid." };
-    if (!passwordSchema.safeParse(password).success) return { error: "Password is invalid." };
-    // if (!firstNameSchema.safeParse(firstName).success) return { error: "First name is invalid." };
-    // if (!lastNameSchema.safeParse(lastName).success) return { error: "Last name is invalid." };
+    if (!emailSchema.safeParse(email).success)
+        return { error: "Email is invalid." };
+    if (!passwordSchema.safeParse(password).success)
+        return { error: "Password is invalid." };
 
     const hashedPassword = await bcrypt.hash(password, 10);
     let user = null;
@@ -74,8 +74,7 @@ export async function createUser(email: string, password: string, schoolName: st
     formData.append("email", email);
     formData.append("password", password);
 
-    sendVerificationEmail(email, schoolName);
-    return { ok: true };
+    return signInAction(formData);
 }
 
 export async function signInAction(formData: FormData) {

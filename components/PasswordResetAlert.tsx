@@ -1,22 +1,25 @@
 import { Dialog, DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { sendResetEmail } from "@/lib/email/emailer";
-import { SchoolConfig } from "@/lib/schools";
 
-interface EmailVerificationProps {
-    isOpen: boolean;
-    onClose: () => void;
-    email: string;
-    config: SchoolConfig;
+// Utils
+// import { sendResetEmail } from "@/lib/email/emailer";
+import type { SchoolConfig } from "@/lib/schools";
+
+
+type EmailVerificationProps = {
+    isOpen: boolean,
+    onClose: () => void,
+    email: string,
+    config: SchoolConfig,
 }
 
 export default function ResetPasswordAlert({ isOpen, onClose, email, config }: EmailVerificationProps) {
-    const router = useRouter();
     if (!isOpen) return null;
+
     const resendResetPassword = () => {
-        sendResetEmail(email, config.name);
+        // sendResetEmail(email, config.name);
     };
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogHeader>
@@ -36,4 +39,3 @@ export default function ResetPasswordAlert({ isOpen, onClose, email, config }: E
         </Dialog>
     );
 }
-

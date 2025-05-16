@@ -1,5 +1,6 @@
+'use client'
+
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,19 +13,19 @@ import { Button } from "@/components/ui/button";
 import EmailVerificationDialog from "./EmailVerification";
 
 // Util
+import type { SchoolConfig } from "@/lib/schools";
 import { emailSchema } from "@/lib/config";
-import { sendVerificationEmail } from "@/lib/email/emailer";
+// import { sendVerificationEmail } from "@/lib/email/emailer";
 import { checkUser } from "@/lib/auth";
-import { SchoolConfig } from "@/lib/schools";
+
 
 const FormSchema = z.object({
     email: emailSchema,
 });
 
 type PasswordResetProps = {
-    config: SchoolConfig;
+    config: SchoolConfig
 };
-
 
 export default function VerificationEmail(config: PasswordResetProps) {
     const [errorMessage, setErrorMessage] = useState("");
@@ -41,7 +42,7 @@ export default function VerificationEmail(config: PasswordResetProps) {
 
             const res = await checkUser(email);
             if (res.ok) {
-                await sendVerificationEmail(email, config.config.name);
+                // await sendVerificationEmail(email, config.config.name);
                 setIsDialogOpen(true);
                 setUserEmail(data.email);
             } else {
@@ -54,7 +55,12 @@ export default function VerificationEmail(config: PasswordResetProps) {
 
     return (
         <>
-            <EmailVerificationDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} email={userEmail} config={config.config} />
+            <EmailVerificationDialog
+                isOpen={isDialogOpen}
+                onClose={() => setIsDialogOpen(false)}
+                email={userEmail}
+                config={config.config}
+            />
 
             {!isDialogOpen && (
                 <>
@@ -93,4 +99,3 @@ export default function VerificationEmail(config: PasswordResetProps) {
         </>
     );
 }
-

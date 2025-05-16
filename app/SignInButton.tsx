@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -20,7 +22,7 @@ type SignInButtonProps = {
     config?: SchoolConfig,
     hasTrigger?: boolean,
     isOpen?: boolean,
-    setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>
 }
 
 export default function SignInButton(props: SignInButtonProps) {

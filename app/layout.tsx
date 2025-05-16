@@ -30,9 +30,6 @@ export default async function RootLayout(props: { children: ReactNode }) {
     const theme = cookies().get(THEME_COOKIE_NAME)?.value;
     let session = await auth();
 
-    // ensure that they aren't using a school account
-    if (session?.user?.email?.endsWith(".edu")) session = null;
-
     const host = cookies().get(SCHOOL_COOKIE_NAME)?.value;
     const config = schoolToConfig(host);
 

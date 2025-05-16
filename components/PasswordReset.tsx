@@ -1,5 +1,6 @@
+'use client'
+
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,36 +10,31 @@ import { DialogHeader } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import EmailVerificationDialog from "./EmailVerification";
+import ResetPasswordAlert from "./PasswordResetAlert";
 
 // Util
+import type { SchoolConfig } from "@/lib/schools";
 import { emailSchema, firstNameSchema, lastNameSchema, passwordSchema } from "@/lib/config";
-import { sendResetEmail, sendVerificationEmail } from "@/lib/email/emailer";
-import prisma from "@/lib/db/prisma";
+// import { sendResetEmail } from "@/lib/email/emailer";
 import { checkUser } from "@/lib/auth";
-import ResetPasswordAlert from "./PasswordResetAlert";
-import { SchoolConfig } from "@/lib/schools";
+
 
 const FormSchema = z.object({
     email: emailSchema,
 });
 
 type PasswordResetProps = {
-    config: SchoolConfig;
+    config: SchoolConfig
 };
 
 export default function PasswordReset(config: PasswordResetProps) {
     const [errorMessage, setErrorMessage] = useState("");
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [userEmail, setUserEmail] = useState("");
-    
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
-
-    
-    const router = useRouter();
 
     async function handleSubmit(data: z.infer<typeof FormSchema>) {
         try {
@@ -46,7 +42,7 @@ export default function PasswordReset(config: PasswordResetProps) {
 
             const res = await checkUser(email);
             if (res.ok) {
-                await sendResetEmail(email, config.config.name);
+                // await sendResetEmail(email, config.config.name);
                 setIsDialogOpen(true);
                 setUserEmail(data.email);
             } else {
@@ -59,7 +55,12 @@ export default function PasswordReset(config: PasswordResetProps) {
 
     return (
         <>
-            <ResetPasswordAlert isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} email={userEmail} config={config.config} />
+            <ResetPasswordAlert
+                isOpen={isDialogOpen}
+                onClose={() => setIsDialogOpen(false)}
+                email={userEmail}
+                config={config.config}
+            />
 
             {!isDialogOpen && (
                 <>
@@ -98,4 +99,3 @@ export default function PasswordReset(config: PasswordResetProps) {
         </>
     );
 }
-

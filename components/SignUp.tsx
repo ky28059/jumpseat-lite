@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -122,7 +121,7 @@ export default function SignUp({
                                     <FormItem>
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="bruhbruh25@gmail.com" {...field} />
+                                            <Input placeholder={config?.emailPlaceholder ?? 'joe@example.com'} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
