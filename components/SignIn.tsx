@@ -13,15 +13,10 @@ import { Button } from "@/components/ui/button";
 import { checkVerified, signInAction } from "@/lib/auth";
 import { SchoolConfig } from "@/lib/schools";
 
-type PasswordResetProps = {
-    config: SchoolConfig;
-};
 
-const idToSchool: { [key: number]: string } = {
-    1: "Purdue",
-    2: "IU",
-    4: "UIUC"
-};
+type PasswordResetProps = {
+    config: SchoolConfig
+}
 
 export default function LoginContent(config: PasswordResetProps) {
     const [errorMessage, setErrorMessage] = useState("");
