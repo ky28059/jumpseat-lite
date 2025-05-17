@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction, HTMLAttributes, MouseEvent, useEffect, useState } from "react";
 import { addMonths } from "date-fns";
-import { ActiveModifiers, DateRange, SelectRangeEventHandler } from "react-day-picker";
+import { DateRange, Modifiers, OnSelectHandler } from "react-day-picker";
 
 // Components
 import { Calendar } from "@/components/ui/calendar";
@@ -32,12 +32,7 @@ export function DateRangePicker({
         setMonth(date?.from ?? new Date());
     }, [date]);
 
-    const handleSetDate: SelectRangeEventHandler = (
-        range: DateRange | undefined,
-        selectedDay: Date,
-        activeModifiers: ActiveModifiers,
-        e: MouseEvent
-    ) => {
+    const handleSetDate: OnSelectHandler<DateRange | undefined> = (range, selectedDay, activeModifiers, e) => {
         // if both dates valid, set new departure date and clear return date
         if (date?.from && date.to) {
             setDate({ from: selectedDay, to: undefined });
@@ -58,7 +53,7 @@ export function DateRangePicker({
     return (
         <div className={cn("grid gap-2", className)}>
             <Calendar
-                initialFocus
+                autoFocus
                 mode="range"
                 month={month}
                 onMonthChange={setMonth}

@@ -9,10 +9,10 @@ import { BreakType } from "@prisma/client";
 
 type DepArrTimeProps = {
     breakOption: BreakType | "custom"
-    depTime: TimeValue | undefined
-    setDepTime: Dispatch<SetStateAction<TimeValue | undefined>>
-    arrTime: TimeValue | undefined
-    setArrTime: Dispatch<SetStateAction<TimeValue | undefined>>
+    depTime: TimeValue | null
+    setDepTime: Dispatch<SetStateAction<TimeValue | null>>
+    arrTime: TimeValue | null
+    setArrTime: Dispatch<SetStateAction<TimeValue | null>>
 }
 
 export default function DepArrTime({ breakOption, depTime, setDepTime, arrTime, setArrTime }: DepArrTimeProps) {
