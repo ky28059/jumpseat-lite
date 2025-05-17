@@ -23,7 +23,7 @@ export default async function AccountPage() {
     const session = await auth();
     if (!session?.user.id) redirect('/');
 
-    const host = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const school = (await cookies()).get(SCHOOL_COOKIE_NAME)?.value;
 
     const user = await prisma.user.findUnique({
         where: { id: Number(session.user.id) },
@@ -47,7 +47,7 @@ export default async function AccountPage() {
                     airports={new Set(user.airports)}
                     airportLocs={Object.entries(airportLocationMap)}
                     schoolAirports={user.school?.airportIatas}
-                    school={host}
+                    school={school}
                 />
             </div>
 

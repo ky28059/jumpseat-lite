@@ -42,7 +42,7 @@ export async function generateMetadata(
     if (searchParams.direction !== 'toSchool' && searchParams.direction !== 'fromSchool')
         return {};
 
-    const school = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const school = (await cookies()).get(SCHOOL_COOKIE_NAME)?.value;
     const config = schoolToConfig(school);
     if (!config) return {};
 
@@ -82,7 +82,7 @@ export default async function Results(
         redirect("/search");
 
     // Get the school for this search
-    const schoolId = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const schoolId = (await cookies()).get(SCHOOL_COOKIE_NAME)?.value;
     const config = schoolToConfig(schoolId);
     if (!config)
         redirect("/search");

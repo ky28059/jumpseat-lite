@@ -23,9 +23,11 @@ export const metadata: Metadata = {
 };
 
 export default async function Search({ searchParams }: { searchParams: { to?: string } }) {
-    const school = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const c = await cookies();
+
+    const school = c.get(SCHOOL_COOKIE_NAME)?.value;
     const config = schoolToConfig(school);
-    const theme = cookies().get(THEME_COOKIE_NAME)?.value;
+    const theme = c.get(THEME_COOKIE_NAME)?.value;
 
     // Fetch break dates for the given school.
     // TODO: default to not purdue?

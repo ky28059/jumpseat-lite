@@ -27,10 +27,12 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout(props: { children: ReactNode }) {
-    const theme = cookies().get(THEME_COOKIE_NAME)?.value;
+    const c = await cookies();
+
+    const theme = c.get(THEME_COOKIE_NAME)?.value;
     let session = await auth();
 
-    const host = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+    const host = c.get(SCHOOL_COOKIE_NAME)?.value;
     const config = schoolToConfig(host);
 
     return (

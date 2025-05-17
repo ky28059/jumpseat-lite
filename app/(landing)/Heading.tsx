@@ -12,8 +12,8 @@ import { schoolToConfig, schoolConfigs } from "@/lib/schools";
 import { SCHOOL_COOKIE_NAME } from '@/lib/config';
 
 
-export default function Heading() {
-    const school = cookies().get(SCHOOL_COOKIE_NAME)?.value;
+export default async function Heading() {
+    const school = (await cookies()).get(SCHOOL_COOKIE_NAME)?.value;
     const config = schoolToConfig(school);
 
     const initialDelay = 300;
