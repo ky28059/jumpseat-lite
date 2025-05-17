@@ -14,7 +14,9 @@ export const metadata: Metadata = {
     title: 'Blog'
 }
 
-export default async function Blog({ searchParams }: { searchParams: { topic?: BlogCategory } }) {
+export default async function Blog({ searchParams }: { searchParams: Promise<{ topic?: BlogCategory }> }) {
+    const params = await searchParams;
+
     // Fetch and render all blogs
     const posts = await prisma.blogPost.findMany({
         orderBy: [{ createdAt: 'desc' }],
@@ -40,7 +42,7 @@ export default async function Blog({ searchParams }: { searchParams: { topic?: B
 
             <BlogContent
                 posts={posts}
-                initialCategory={searchParams.topic}
+                initialCategory={params.topic}
             />
         </div>
     )
