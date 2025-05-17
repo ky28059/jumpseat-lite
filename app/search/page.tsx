@@ -22,7 +22,8 @@ export const metadata: Metadata = {
     title: "Search",
 };
 
-export default async function Search({ searchParams }: { searchParams: { to?: string } }) {
+export default async function Search({ searchParams }: { searchParams: Promise<{ to?: string }> }) {
+    const params = await searchParams;
     const c = await cookies();
 
     const school = c.get(SCHOOL_COOKIE_NAME)?.value;
@@ -37,7 +38,7 @@ export default async function Search({ searchParams }: { searchParams: { to?: st
     // - If there are search params set, use those first.
     // - Otherwise, try to load the user's home airports.
     async function getPrefilledToDest() {
-        if (searchParams.to) return new Set(searchParams.to.split(","));
+        if (params.to) return new Set(params.to.split(","));
 
         const session = await auth();
         if (!session?.user.id) return;

@@ -31,54 +31,58 @@ export type ResultsParams = {
 };
 
 export async function generateMetadata(
-    { searchParams }: { searchParams: Partial<ResultsParams> }
+    { searchParams }: { searchParams: Promise<Partial<ResultsParams>> }
 ): Promise<Metadata> {
+    const params = await searchParams;
+
     if (
-        !searchParams.direction
-        || !searchParams.extAirports
-        || !searchParams.depDate
+        !params.direction
+        || !params.extAirports
+        || !params.depDate
     ) return {}; // TODO?
 
-    if (searchParams.direction !== 'toSchool' && searchParams.direction !== 'fromSchool')
+    if (params.direction !== 'toSchool' && params.direction !== 'fromSchool')
         return {};
 
     const school = (await cookies()).get(SCHOOL_COOKIE_NAME)?.value;
     const config = schoolToConfig(school);
     if (!config) return {};
 
-    const extAirports = searchParams.extAirports.split(",");
+    const extAirports = params.extAirports.split(",");
 
-    const from = searchParams.direction === 'fromSchool'
+    const from = params.direction === 'fromSchool'
         ? config.name
         : airportCodesToLocationStr(extAirports)
-    const to = searchParams.direction === 'fromSchool'
+    const to = params.direction === 'fromSchool'
         ? airportCodesToLocationStr(extAirports)
         : config.name
 
     return {
-        title: `${from} ↔ ${to} (${searchParams.depDate})`, // TODO
+        title: `${from} ↔ ${to} (${params.depDate})`, // TODO
     };
 }
 
 export default async function Results(
-    { searchParams }: { searchParams: Partial<ResultsParams> }
+    { searchParams }: { searchParams: Promise<Partial<ResultsParams>> }
 ) {
+    const params = await searchParams;
+
     if (
-        !searchParams.direction
-        || !searchParams.extAirports
-        || !searchParams.depDate
+        !params.direction
+        || !params.extAirports
+        || !params.depDate
     ) redirect("/search");
 
-    if (searchParams.direction !== 'toSchool' && searchParams.direction !== 'fromSchool')
+    if (params.direction !== 'toSchool' && params.direction !== 'fromSchool')
         redirect("/search");
 
-    const extAirports = searchParams.extAirports.split(",");
+    const extAirports = params.extAirports.split(",");
     if (!extAirports.length)
         redirect("/search");
 
     // Ensure there's a return date if round trip is selected.
-    const roundTrip = searchParams.roundTrip === "true";
-    if (roundTrip && !searchParams.retDate)
+    const roundTrip = params.roundTrip === "true";
+    if (roundTrip && !params.retDate)
         redirect("/search");
 
     // Get the school for this search
@@ -87,20 +91,20 @@ export default async function Results(
     if (!config)
         redirect("/search");
 
-    const from = searchParams.direction === 'fromSchool'
+    const from = params.direction === 'fromSchool'
         ? config.name
         : airportCodesToLocationStr(extAirports)
-    const to = searchParams.direction === 'fromSchool'
+    const to = params.direction === 'fromSchool'
         ? airportCodesToLocationStr(extAirports)
         : config.name
 
     // Fetch school from database for internal airports
     const school = await getSchoolByName(config.name);
 
-    const fromAirports = searchParams.direction === 'fromSchool'
+    const fromAirports = params.direction === 'fromSchool'
         ? school!.airportIatas
         : extAirports
-    const toAirports = searchParams.direction === 'fromSchool'
+    const toAirports = params.direction === 'fromSchool'
         ? extAirports
         : school!.airportIatas
 
@@ -111,11 +115,11 @@ export default async function Results(
         bookingUrl: s.bookingUrl
     }]));
 
-    const depRange = [searchParams.depRangeStart ? Number(searchParams.depRangeStart) : 0, searchParams.depRangeEnd ? Number(searchParams.depRangeEnd) : 1440];
-    const arrRange = [searchParams.arrRangeStart ? Number(searchParams.arrRangeStart) : 0, searchParams.arrRangeStart ? Number(searchParams.arrRangeEnd) : 1440];
+    const depRange = [params.depRangeStart ? Number(params.depRangeStart) : 0, params.depRangeEnd ? Number(params.depRangeEnd) : 1440];
+    const arrRange = [params.arrRangeStart ? Number(params.arrRangeStart) : 0, params.arrRangeStart ? Number(params.arrRangeEnd) : 1440];
 
-    const carryCnt = Number(searchParams.carryCnt); // TODO: validate
-    const checkCnt = Number(searchParams.checkCnt);
+    const carryCnt = Number(params.carryCnt); // TODO: validate
+    const checkCnt = Number(params.checkCnt);
 
     const session = await auth();
     const userID = session?.user.id ? Number(session.user.id) : undefined;
@@ -133,11 +137,11 @@ export default async function Results(
                 airportMap={airportMap}
 
                 school={config.name}
-                direction={searchParams.direction}
+                direction={params.direction}
                 intAirports={school!.airportIatas}
                 extAirports={extAirports}
-                depDate={searchParams.depDate}
-                retDate={searchParams.retDate}
+                depDate={params.depDate}
+                retDate={params.retDate}
 
                 depRange={depRange}
                 arrRange={arrRange}
