@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 // Components
-import { DialogHeader } from "@/components/ui/dialog";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -40,7 +40,7 @@ export default function LoginContent(config: PasswordResetProps) {
     return (
         <>
             <DialogHeader>
-                <h1 className="text-2xl font-bold mb-1">Log in</h1>
+                <DialogTitle className="text-2xl font-bold mb-1">Log in</DialogTitle>
                 <p className="text-sm text-secondary">Enter your email and password to log in to your account.</p>
             </DialogHeader>
 

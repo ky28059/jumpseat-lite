@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Components
-import { DialogHeader } from "@/components/ui/dialog";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -68,7 +68,7 @@ export default function SignUp({ config }: SignUpProps) {
             {!isDialogOpen && (
                 <>
                     <DialogHeader>
-                        <h1 className="text-2xl font-bold mb-1">Create an account</h1>
+                        <DialogTitle className="text-2xl font-bold mb-1">Create an account</DialogTitle>
                         <p className="text-sm text-secondary">
                             Enter your email and password to create an account.
                         </p>
