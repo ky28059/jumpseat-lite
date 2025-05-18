@@ -30,13 +30,15 @@ export default function Footer() {
                             </ul>
                         </div>
 
+                        {/*
                         <div>
                             <h5 className="mb-3 font-semibold">About us</h5>
                             <ul className="flex flex-col gap-1.5 text-sm">
                                 <FooterInternalLink href="/about">About</FooterInternalLink>
-                                {/* <FooterInternalLink href="/blog">Blog</FooterInternalLink> */}
+                                <FooterInternalLink href="/blog">Blog</FooterInternalLink>
                             </ul>
                         </div>
+                        */}
 
                         <div>
                             <h5 className="mb-3 font-semibold">Account</h5>
@@ -48,7 +50,7 @@ export default function Footer() {
                 </div>
 
                 <p className="text-xs text-secondary">
-                    © 2024 Campus Ventures, LLC
+                    © 2025, all rights reserved.
                 </p>
             </div>
         </footer>

@@ -13,7 +13,7 @@ export default function Home() {
                 <SearchSection />
 
                 <LogoScroller />
-                <LetterSection />
+                {/* <LetterSection /> */}
             </div>
         </>
     );

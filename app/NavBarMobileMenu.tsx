@@ -31,14 +31,19 @@ export default function NavBarMobileMenu() {
                 </NavBarMenuLink>
                 */}
 
+                {/*
                 <NavBarMenuLink href="/about" setOpen={setOpen}>
                     About
                 </NavBarMenuLink>
+                */}
 
-                {/* <NavBarMenuLink href="/blog" setOpen={setOpen}>
+                {/*
+                <NavBarMenuLink href="/blog" setOpen={setOpen}>
                     Blog
-                </NavBarMenuLink> */}
+                </NavBarMenuLink>
+                */}
 
+                {/*
                 <a
                     // TODO
                     className="py-2 px-2.5 text-lg text-secondary hover:text-primary transition duration-200 font-semibold"
@@ -48,6 +53,7 @@ export default function NavBarMobileMenu() {
                 >
                     Portal
                 </a>
+                */}
             </PopoverContent>
         </Popover>
     )

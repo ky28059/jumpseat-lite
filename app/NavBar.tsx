@@ -50,6 +50,7 @@ export default function NavBar(props: NavBarProps) {
                 Search
             </NavLink>
 
+            {/*
             <NavigationMenu className="hidden lg:block">
                 <NavigationMenuList>
                     <NavigationMenuItem>
@@ -62,15 +63,14 @@ export default function NavBar(props: NavBarProps) {
                                 About us
                             </NavDropdownLink>
 
-                            {/*
                             <NavDropdownLink href="/blog">
                                 Blog
                             </NavDropdownLink>
-                            */}
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
+            */}
 
             <div className="ml-auto flex">
                 <ThemeToggle className="hidden lg:block p-2.5 mx-2" />
