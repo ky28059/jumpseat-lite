@@ -118,7 +118,7 @@ export default function ComboCard(props: ComboCardProps) {
                 className="flex flex-row items-center justify-between w-full h-[90%] max-h-[103px]"
                 onClick={() => expanded && setExpanded(false)}
             >
-                <div className="sm:w-[17rem] w-[15rem] flex-none grid grid-cols-[26px_1fr] md:grid-cols-[45px_1fr] gap-x-2 gap-y-3">
+                <div className="sm:w-68 w-60 flex-none grid grid-cols-[26px_1fr] md:grid-cols-[45px_1fr] gap-x-2 gap-y-3">
                     <img
                         className="size-[26px] md:size-[45px] object-contain object-center rounded border border-tertiary bg-white"
                         src={itinerary.airline_logo}
@@ -215,10 +215,10 @@ export default function ComboCard(props: ComboCardProps) {
                     </div>
                 </div>
                 {!props.finalize && (
-                    <div className="md:bg-gradient-to-r from-blue-800 dark:from-blue-600 !to-blue-500 p-[2px] rounded-md min-w-[95px] h-[120px]">
+                    <div className="md:bg-linear-to-r from-blue-800 dark:from-blue-600 to-blue-500! p-[2px] rounded-md min-w-[95px] h-[120px]">
                         <div className="flex flex-col justify-center md:justify-between h-full rounded-sm w-full p-2 bg-content">
                             <div className="flex flex-col text-end items-end">
-                                <p className="text-lg font-semibold bg-gradient-to-r from-blue-800 dark:from-blue-600 !to-blue-500 inline-block text-transparent bg-clip-text">
+                                <p className="text-lg font-semibold bg-linear-to-r from-blue-800 dark:from-blue-600 to-blue-500! inline-block text-transparent bg-clip-text">
                                     ${stage == ResultsStage.DEPARTURE ? itinerary.price + shuttle.price * (roundTrip ? 2 : 1): itinerary.price + shuttle.price + props.firstShuttlePrice!}
                                 </p>
                                 <p className="text-secondary text-[9px]">Economy</p>
@@ -227,7 +227,7 @@ export default function ComboCard(props: ComboCardProps) {
                                 {/*<p className="text-secondary text-[9px]">United.com</p>*/}
                             </div>
                             <button
-                                className="hidden md:block bg-gradient-to-r from-blue-800 dark:from-blue-600 !to-blue-500 text-center w-full self-center rounded-md text-white text-[10px] py-1 font-medium cursor-pointer hover:opacity-80"
+                                className="hidden md:block bg-linear-to-r from-blue-800 dark:from-blue-600 to-blue-500! text-center w-full self-center rounded-md text-white text-[10px] py-1 font-medium cursor-pointer hover:opacity-80"
                                 onClick={onSelect}
                             >
                                 Select
@@ -237,7 +237,7 @@ export default function ComboCard(props: ComboCardProps) {
                 )}
             </div>
             <div
-                className="md:hidden flex flex-row justify-between items-center gap-1 pt-2 w-full border-t-[1px] border-tertiary"
+                className="md:hidden flex flex-row justify-between items-center gap-1 pt-2 w-full border-t border-tertiary"
                 onClick={() => setExpanded(!expanded)}
             >
                 <div className={cn("flex justify-between", shuttleBefore ? "flex-col-reverse" : "flex-col")}>

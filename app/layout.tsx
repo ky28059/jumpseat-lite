@@ -51,7 +51,7 @@ export default async function RootLayout(props: { children: ReactNode }) {
                     session={session}
                     config={config}
                 />
-                <main className="flex-grow flex flex-col">
+                <main className="grow flex flex-col">
                     {props.children}
                 </main>
                 <Footer />

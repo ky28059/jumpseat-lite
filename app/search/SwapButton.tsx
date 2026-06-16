@@ -8,10 +8,10 @@ type SwapButtonProps = {
 export default function SwapButton({ pressed, onClick }: SwapButtonProps) {
     return (
         <button
-            className="sm:w-10 w-11 flex-none rounded-md bg-[#f6f9fc] dark:bg-[#333333] sm:static absolute sm:top-0 top-6 z-[1] sm:z-0 sm:left-0 right-10 border-[3px] border-white dark:border-[#141414] sm:border-none"
+            className="sm:w-10 w-11 flex-none rounded-md bg-[#f6f9fc] dark:bg-[#333333] sm:static absolute sm:top-0 top-6 z-1 sm:z-0 sm:left-0 right-10 border-[3px] border-white dark:border-[#141414] sm:border-none"
             onClick={onClick}
         >
-            <div className={'transition-transform duration-200 ease-in-out' + (pressed ? ' rotate-[360deg]' : '')}>
+            <div className={'transition-transform duration-200 ease-in-out' + (pressed ? ' rotate-360' : '')}>
                 <IoIosArrowForward
                     size={20}
                     className="hidden sm:flex relative top-2 left-[13px] opacity-40"

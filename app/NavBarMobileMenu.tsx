@@ -19,7 +19,7 @@ export default function NavBarMobileMenu() {
             </PopoverTrigger>
             <PopoverContent
                 sideOffset={13} // py-3 = 0.75rem = 12px, + 1px border
-                className="rounded-none lg:hidden px-3 sm:px-9 border-none w-screen h-[calc(100vh_-_57px)] flex flex-col data-[state=closed]:!zoom-out-100 data-[state=open]:!zoom-in-100 slide-in-from-top-screen"
+                className="rounded-none lg:hidden px-3 sm:px-9 border-none w-screen h-[calc(100vh-57px)] flex flex-col data-[state=closed]:zoom-out-100! data-[state=open]:zoom-in-100! slide-in-from-top-screen"
             >
                 <NavBarMenuLink href="/search" setOpen={setOpen}>
                     Search

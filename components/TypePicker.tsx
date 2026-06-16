@@ -15,7 +15,7 @@ type TypePickerProps = {
 export default function TypePicker(props: TypePickerProps) {
     return (
         <Select value={props.type} onValueChange={props.setType}>
-            <SelectTrigger className={`h-fit w-[8.5rem] flex-none px-2 py-1.5 bg-[#f6f9fc] border-none ${props.isAutopilot ? "dark:bg-[#141414]" : "dark:bg-[#333333]"} rounded-sm`}>
+            <SelectTrigger className={`h-fit w-34 flex-none px-2 py-1.5 bg-[#f6f9fc] border-none ${props.isAutopilot ? "dark:bg-[#141414]" : "dark:bg-[#333333]"} rounded-sm`}>
                 <FaLocationArrow />
                 {props.type}
             </SelectTrigger>

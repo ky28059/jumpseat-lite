@@ -24,7 +24,7 @@ function DateSegment({ segment, state }: DateSegmentProps) {
             aria-label="Time Input"
             className={cn(
                 "focus:rounded-[2px] focus:bg-[#abc7e3] focus:text-accent-foreground focus:outline-none",
-                segment.type !== "literal" ? "px-[1px]" : "",
+                segment.type !== "literal" ? "px-px" : "",
                 segment.isPlaceholder ? "text-secondary" : ""
             )}
         >

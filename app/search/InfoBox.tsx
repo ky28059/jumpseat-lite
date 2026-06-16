@@ -36,7 +36,7 @@ export default function InfoBox({ title, description, icon }: InfoBoxProps) {
                 />
             </div>
             <div className="flex flex-row mb-2">
-                <div className="h-[20px] w-[2px] bg-gradient-to-t from-blue-800 to-theme" />
+                <div className="h-[20px] w-[2px] bg-linear-to-t from-blue-800 to-theme" />
                 <h1 className="font-semibold mb-1 ml-3">{title}</h1>
             </div>
             <h1 className="text-sm ml-3">{description}</h1>

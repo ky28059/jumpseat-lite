@@ -36,7 +36,7 @@ function Calendar({
                 weekdays: "flex",
                 weekday: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
                 week: "flex w-full mt-2",
-                day: "h-9 w-9 text-center text-sm p-0 relative [&[aria-selected]:has(.day-outside)]:bg-accent/50 [&[aria-selected]]:bg-accent focus-within:relative focus-within:z-20",
+                day: "h-9 w-9 text-center text-sm p-0 relative [&[aria-selected]:has(.day-outside)]:bg-accent/50 aria-[selected]:bg-accent focus-within:relative focus-within:z-20",
                 day_button: cn(
                     buttonVariants({ variant: "ghost" }),
                     "h-9 w-9 p-0 font-normal aria-selected:opacity-100"

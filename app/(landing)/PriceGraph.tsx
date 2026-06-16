@@ -537,17 +537,17 @@ export default function PriceGraph() {
                         dataKey="time"
                         // type="number"
                         domain={['auto', 'auto']}
-                        className="text-xs [&_text]:!fill-secondary dark:[&_text]:!fill-primary"
+                        className="text-xs [&_text]:fill-secondary! dark:[&_text]:fill-primary!"
                         tickFormatter={(iso) => formatDate(new Date(iso), 'M/d/yy')}
                         minTickGap={40}
                     />
                     <YAxis
                         domain={[minPoint.price - 50, maxPoint.price + 10]}
-                        className="text-sm [&_text]:!fill-secondary dark:[&_text]:!fill-primary"
+                        className="text-sm [&_text]:fill-secondary! dark:[&_text]:fill-primary!"
                         tickFormatter={(v) => `$${v}`}
                     />
                     <Tooltip
-                        wrapperClassName="rounded !px-4 !py-2 dark:!bg-background !border-tertiary"
+                        wrapperClassName="rounded px-4! py-2! dark:bg-background! border-tertiary!"
                         labelClassName="text-xs text-secondary dark:text-primary"
                         labelFormatter={(iso) => formatDate(new Date(iso), 'M/d/yyyy')}
                         formatter={(price: number) => [`$${price}`]}

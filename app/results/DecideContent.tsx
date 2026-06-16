@@ -161,7 +161,7 @@ export default function DecideContent(props: DecideContentProps) {
                 return={props.return}
             />
 
-            <div className="flex-grow min-w-0">
+            <div className="grow min-w-0">
                 <ResultsSortSelector
                     sort={sort}
                     setSort={setSort}
@@ -184,7 +184,7 @@ export default function DecideContent(props: DecideContentProps) {
                     ))}
                 </section>
 
-                <div className="fixed top-0 h-72 w-full bg-gradient-to-b from-background to-transparent pointer-events-none" />
+                <div className="fixed top-0 h-72 w-full bg-linear-to-b from-background to-transparent pointer-events-none" />
             </div>
         </section>
     )

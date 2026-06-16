@@ -52,7 +52,7 @@ export default function AccountContent(props: AccountContentProps) {
     return (
         <>
             <h2 className="font-semibold text-2xl mt-16 mb-4">Account</h2>
-            <div className="flex flex-col gap-3 py-6 px-8 overflow-clip transition-[height] duration-300 shadow-[0_35px_60px_-15px_rgba(0,_0,_0,_0.1)] border border-tertiary/75 rounded-md">
+            <div className="flex flex-col gap-3 py-6 px-8 overflow-clip transition-[height] duration-300 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] border border-tertiary/75 rounded-md">
                 <h3 className="font-semibold text-lg mb-2">Profile Settings</h3>
 
                 {/* <div className="flex items-center">

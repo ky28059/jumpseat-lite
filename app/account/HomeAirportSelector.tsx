@@ -60,7 +60,7 @@ export default function HomeAirportSelector(props: HomeAirportSelectorProps) {
                         No home airport selected.
                     </p>
                 ) : (
-                    <div className="flex flex-col flex-grow gap-1">
+                    <div className="flex flex-col grow gap-1">
                         {airports.map(a => (
                             <div className="rounded-md px-2 py-0.5 bg-theme/30 text-theme text-sm font-semibold">
                                 {a.name} ({a.iata})

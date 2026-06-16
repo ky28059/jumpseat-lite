@@ -10,7 +10,7 @@ import { useBreakpoint } from '@/hooks/useBreakpoint';
 export default function StripeGlobe() {
     return (
         <Canvas
-            className="!absolute inset-0 translate-x-1/3 -translate-y-1/4 sm:translate-y-0"
+            className="absolute! inset-0 translate-x-1/3 -translate-y-1/4 sm:translate-y-0"
             gl={{ antialias: false }}
             camera={{ position: [0, 0, 33] }}
         >

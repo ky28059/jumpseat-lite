@@ -49,7 +49,7 @@ function ResultsSortTab(props: ResultsSortTabProps) {
     const active = props.sort === props.value;
 
     return (
-        <div className="flex flex-grow w-1/3 px-2">
+        <div className="flex grow w-1/3 px-2">
             <button
                 className="w-full flex flex-col items-stretch text-center rounded pt-2 hover:bg-content transition duration-200"
                 onClick={() => props.setSort(props.value)}

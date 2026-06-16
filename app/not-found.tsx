@@ -5,7 +5,7 @@ import NotFoundImage from "@/public/assets/404.jpg";
 
 export default function NotFound() {
     return (
-        <div className="flex-grow flex flex-col justify-center items-center mt-16 pb-10 -ml-12">
+        <div className="grow flex flex-col justify-center items-center mt-16 pb-10 -ml-12">
             <div className="flex flex-col items-start md:flex-row md:items-center gap-10 mx-8 py-8">
                 <Image
                     src={NotFoundImage}

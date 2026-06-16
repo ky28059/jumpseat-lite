@@ -137,7 +137,7 @@ export default function AirportSelector(props: AirportSelectorProps) {
                 ))}
                 <input
                     type="text"
-                    className="focus:outline-none bg-transparent w-36 flex-grow placeholder:text-secondary"
+                    className="focus:outline-none bg-transparent w-36 grow placeholder:text-secondary"
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder={props.placeholder}
                     value={query}
@@ -162,7 +162,7 @@ export default function AirportSelector(props: AirportSelectorProps) {
                             {airports.length > 1 && (
                                 <div className={`flex justify-between items-center px-3 mx-2 rounded hover:bg-content-secondary dark:hover:bg-content transition duration-200${!airports.some((airport) => !excludedAirports.includes(airport.iata)) ? " opacity-30 hover:cursor-not-allowed" : ""}`}>
                                     <Label
-                                        className={`flex-grow cursor-pointer m-0 text-primary flex items-center gap-2 py-2${!airports.some((airport) => !excludedAirports.includes(airport.iata)) ? " hover:cursor-not-allowed" : ""}`}
+                                        className={`grow cursor-pointer m-0 text-primary flex items-center gap-2 py-2${!airports.some((airport) => !excludedAirports.includes(airport.iata)) ? " hover:cursor-not-allowed" : ""}`}
                                         htmlFor={loc}
                                     >
                                         <FaLocationDot size={14} className="text-theme" />
@@ -189,7 +189,7 @@ export default function AirportSelector(props: AirportSelectorProps) {
                                     className={`flex justify-between gap-3 items-center px-3 mx-2 rounded hover:bg-content-secondary dark:hover:bg-content transition duration-200${excludedAirports.includes(airport.iata) ? " opacity-30 hover:cursor-not-allowed" : ""}`}
                                 >
                                     <Label
-                                        className={`flex-grow cursor-pointer m-0 text-primary flex items-center gap-2 py-2${excludedAirports.includes(airport.iata) ? " hover:cursor-not-allowed" : ""}`}
+                                        className={`grow cursor-pointer m-0 text-primary flex items-center gap-2 py-2${excludedAirports.includes(airport.iata) ? " hover:cursor-not-allowed" : ""}`}
                                         htmlFor={`${loc}-${airport.name}`}
                                     >
                                         {airports.length > 1 && (

@@ -22,7 +22,7 @@ export default function HeadingAnimatedText(props: HeadingAnimatedTextProps) {
     }, []);
 
     return (
-        <span className={`absolute left-0 bg-gradient-to-r from-theme to-sky-500 bg-clip-text text-transparent pb-4 w-max ${animateClassName}`}>
+        <span className={`absolute left-0 bg-linear-to-r from-theme to-sky-500 bg-clip-text text-transparent pb-4 w-max ${animateClassName}`}>
             {props.children}
         </span>
     );

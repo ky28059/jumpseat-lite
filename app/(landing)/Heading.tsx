@@ -27,7 +27,7 @@ export default async function Heading() {
         .filter((n) => n !== config?.name);
 
     return (
-        <header className="relative bg-background bg-fixed bg-[linear-gradient(110deg,_var(--tw-gradient-stops))] from-55% from-transparent via-theme to-sky-500 dark:to-blue-700 md:h-screen h-[70vh] flex flex-col justify-center overflow-hidden">
+        <header className="relative bg-background bg-fixed bg-linear-110/srgb from-55% from-transparent via-80% via-theme to-sky-500 dark:to-blue-700 md:h-screen h-[70vh] flex flex-col justify-center overflow-hidden">
             <StripeGlobe />
 
             <div className="relative container mx-0 select-none pointer-events-none -mt-8 sm:-mt-4">

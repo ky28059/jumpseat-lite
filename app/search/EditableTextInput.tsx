@@ -46,7 +46,7 @@ export default function EditableTextInput({ placeholder, value, onChange, classN
     const defaultPasswordPlaceholder = "•".repeat(8);
 
     return (
-        <div className="relative flex-grow sm:w-full md:w-auto">
+        <div className="relative grow sm:w-full md:w-auto">
             {isEditing ? (
                 <div className="flex items-center">
                     <input

@@ -91,7 +91,7 @@ export default function ResultsSidebar(props: ResultsSidebarProps) {
     return (
         <aside
             className={cn(
-                "fixed lg:sticky inset-y-0 left-0 lg:top-20 bg-background z-50 lg:z-0 py-16 lg:py-0 lg:w-64 flex-none lg:pr-6 border-r border-tertiary lg:h-max lg:max-h-[calc(100vh_-_6.5rem)] overflow-y-scroll scrollbar:w-1 scrollbar-thumb:bg-tertiary hover:scrollbar-thumb:bg-secondary scrollbar-thumb:transition scrollbar-thumb:duration-200 transition-[width] duration-200 overflow-x-hidden",
+                "fixed lg:sticky inset-y-0 left-0 lg:top-20 bg-background z-50 lg:z-0 py-16 lg:py-0 lg:w-64 flex-none lg:pr-6 border-r border-tertiary lg:h-max lg:max-h-[calc(100vh-6.5rem)] overflow-y-scroll scrollbar:w-1 scrollbar-thumb:bg-tertiary hover:scrollbar-thumb:bg-secondary scrollbar-thumb:transition scrollbar-thumb:duration-200 transition-[width] duration-200 overflow-x-hidden",
                 open ? "w-64 pr-6" : "w-0"
             )}
         >

@@ -58,7 +58,7 @@ export default function NavBar(props: NavBarProps) {
                             About
                         </NavigationMenuTrigger>
 
-                        <NavigationMenuContent className="bg-background border-tertiary !w-40 flex flex-col px-1.5 pt-1.5 pb-2">
+                        <NavigationMenuContent className="bg-background border-tertiary w-40! flex flex-col px-1.5 pt-1.5 pb-2">
                             <NavDropdownLink href="/about">
                                 About us
                             </NavDropdownLink>

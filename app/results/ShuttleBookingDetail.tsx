@@ -38,7 +38,7 @@ export default function ShuttleBookingDetail(props: ShuttleBookingDetailProps) {
             <div className="flex flex-row justify-between items-center gap-2 sm:gap-4">
                 <FaVanShuttle size={24} className="text-blue-500" />
 
-                <div className="flex flex-col gap-1 flex-grow">
+                <div className="flex flex-col gap-1 grow">
                     <h2 className="font-medium text-sm sm:text-base flex gap-2 items-center ml-1">
                         Book with {provider.name}
                     </h2>

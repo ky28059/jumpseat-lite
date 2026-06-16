@@ -49,7 +49,7 @@ export default function BookingDetail(props: BookingOption) {
             <div className="flex flex-row justify-between items-center gap-2 sm:gap-4">
                 <MdAirplanemodeActive size={24} className="text-blue-500" />
 
-                <div className="flex flex-col gap-1 flex-grow">
+                <div className="flex flex-col gap-1 grow">
                     <h2 className="font-medium text-sm sm:text-base flex gap-2 items-center">
                         Book with {props.together.book_with}
                         {props.together.option_title && (

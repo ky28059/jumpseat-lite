@@ -120,13 +120,13 @@ export default function EditBlogModal(props: EditBlogModalProps) {
                 <Label htmlFor="content">Post content</Label>
                 <div className="flex gap-4 min-w-0 mb-4">
                     <textarea
-                        className="w-1/2 text-sm flex-grow bg-content-secondary px-4 py-2.5 rounded border border-tertiary focus:outline-none focus-visible:border-theme"
+                        className="w-1/2 text-sm grow bg-content-secondary px-4 py-2.5 rounded border border-tertiary focus:outline-none focus-visible:border-theme"
                         required
                         id="content"
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     />
-                    <div className="w-1/2 flex-grow min-w-0">
+                    <div className="w-1/2 grow min-w-0">
                         <BlogPostContent>
                             {content}
                         </BlogPostContent>

@@ -9,7 +9,7 @@ export default function BlogPost(props: BlogPostWithUser) {
     return (
         <div className="flex flex-col md:flex-row gap-x-16 gap-y-8">
             <img
-                className="rounded flex-none w-full md:w-80 lg:w-[26rem] h-72 object-cover object-center shadow-xl"
+                className="rounded flex-none w-full md:w-80 lg:w-104 h-72 object-cover object-center shadow-xl"
                 src={props.image}
                 alt={props.title}
             />

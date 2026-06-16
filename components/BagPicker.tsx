@@ -20,7 +20,7 @@ export default function BagPicker(props: BagPickerProps) {
 
     return (
         <Popover>
-            <PopoverTrigger className="w-[7.5rem] h-fit flex-none px-2 py-1.5 bg-[#f6f9fc] dark:bg-[#333333] rounded-sm flex gap-2 items-center">
+            <PopoverTrigger className="w-30 h-fit flex-none px-2 py-1.5 bg-[#f6f9fc] dark:bg-[#333333] rounded-sm flex gap-2 items-center">
                 <MdLuggage className="flex-none" />
                 <span className="self-center flex-none text-sm">
                     {totalBags} bag{totalBags !== 1 ? 's' : ''}

@@ -192,6 +192,10 @@
         @apply bg-background text-foreground;
     }
 
+    button {
+        @apply cursor-pointer;
+    }
+
     .rdp-vhidden {
         @apply hidden;
     }

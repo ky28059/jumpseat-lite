@@ -37,7 +37,7 @@ export default function FlightSearchBar(props: FlightSearchBarProps) {
                     maxAirports={8}
                     airportLocs={props.airportLocs}
                     className="py-2.5 pl-0 pr-6" // focus-visible:ring-2
-                    popoverClassname="left-[-2.6rem] top-12 w-[calc(100%_+_2.6rem)]"
+                    popoverClassname="left-[-2.6rem] top-12 w-[calc(100%+2.6rem)]"
                     placeholder="San Francisco, CA"
                     dest={dest}
                     setDest={setDest}

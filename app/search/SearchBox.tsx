@@ -127,7 +127,7 @@ export default function SearchBox(props: SearchBoxProps) {
 
     return (
         // className="flex flex-col gap-4 w-fit border rounded-md shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] p-6"
-        <div className="container flex flex-col sm:min-w-[610px] gap-4 p-6 transition-[height] duration-300 shadow-[0_35px_60px_-15px_rgba(0,_0,_0,_0.1)] border border-tertiary/75 rounded-md">
+        <div className="container flex flex-col sm:min-w-[610px] gap-4 p-6 transition-[height] duration-300 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] border border-tertiary/75 rounded-md">
             <div className="flex sm:flex-row flex-col justify-between gap-3">
                 <div className="relative flex min-w-0">
                     <div className={`absolute w-full h-[80%] self-center pointer-events-none ${getBoxShadowClass()}`} />
@@ -201,7 +201,7 @@ export default function SearchBox(props: SearchBoxProps) {
                 <div className="w-full min-w-0">
                     <SchoolSelector
                         className={cn(
-                            "py-2 px-3 gap-1 rounded bg-[#f6f9fc] dark:bg-[#333333] h-auto w-full focus:outline-none !m-0 border-0 text-base",
+                            "py-2 px-3 gap-1 rounded bg-[#f6f9fc] dark:bg-[#333333] h-auto w-full focus:outline-none m-0! border-0 text-base",
                             !config && "text-secondary"
                         )}
                         school={props.school}
