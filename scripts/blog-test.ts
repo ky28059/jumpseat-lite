@@ -1,4 +1,11 @@
-const { PrismaClient, BlogCategory } = require('@prisma/client');
+import "dotenv/config";
+import { withAccelerate } from "@prisma/extension-accelerate";
+import { PrismaClient, BlogCategory } from "../generated/prisma/client";
+
+
+const prisma = new PrismaClient({
+    accelerateUrl: process.env.DATABASE_URL!,
+}).$extends(withAccelerate());
 
 
 const content = `Deciding on an airport? Well, it depends. If you're an international student, the choice is practically made for you: ORD. For domestic flyers, though ORD often offers cheaper flights, it really hinges on where you’re headed—so make sure to do a quick search at [boilerbookings.com/search](https://boilerbookings.com/search) to check flights to your home airport. But if your priority is saving time and there are direct flights to your destination from IND, then IND is your best bet.
@@ -9,10 +16,7 @@ For context, ORD is Chicago O'Hare International Airport, and IND is Indianapoli
 
 If you have any questions or thoughts, please reach out at team@boilerbookings.com. Thanks for reading!`;
 
-
-;(async () => {
-    const prisma = new PrismaClient();
-
+async function main() {
     // Create user and blog post if they don't exist.
     // https://stackoverflow.com/a/71524587
     const user = await prisma.user.upsert({
@@ -48,4 +52,8 @@ If you have any questions or thoughts, please reach out at team@boilerbookings.c
         create: blogData
     })
     console.log(blog)
-})()
+}
+
+main().finally(async () => {
+    await prisma.$disconnect();
+});

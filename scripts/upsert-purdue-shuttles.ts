@@ -1,5 +1,11 @@
-const { PrismaClient, Direction } = require('@prisma/client');
+import "dotenv/config";
+import { withAccelerate } from "@prisma/extension-accelerate";
+import { PrismaClient, Direction } from "../generated/prisma/client";
 
+
+const prisma = new PrismaClient({
+    accelerateUrl: process.env.DATABASE_URL!,
+}).$extends(withAccelerate());
 
 const lafLimoRoutes = [{
     direction: Direction.fromSchool,
@@ -373,12 +379,13 @@ const reindeerRoutes = [{
     arrTimeZone: 'America/Indianapolis',
 }];
 
-;(async () => {
-    const prisma = new PrismaClient();
-
+async function main() {
     // Should be a valid name defined in `schoolConfigs`.
     const schoolName = 'Purdue';
     const school = await prisma.school.findFirst({ where: { schoolName } });
+    if (!school) {
+        throw new Error(`School not found: ${schoolName}`);
+    }
 
     await prisma.shuttleTime.deleteMany({
         where: { provider: { is: { schoolID: school.id } } }
@@ -415,4 +422,8 @@ const reindeerRoutes = [{
         create: reinData,
         update: reinData,
     }));
-})()
+}
+
+main().finally(async () => {
+    await prisma.$disconnect();
+});

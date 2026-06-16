@@ -1,9 +1,13 @@
-const { PrismaClient, BreakType } = require('@prisma/client');
+import "dotenv/config";
+import { withAccelerate } from "@prisma/extension-accelerate";
+import { PrismaClient, BreakType } from "../generated/prisma/client";
 
 
-;(async () => {
-    const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+    accelerateUrl: process.env.DATABASE_URL!,
+}).$extends(withAccelerate());
 
+async function main() {
     // Should be a valid name defined in `schoolConfigs`.
     const schoolName = 'UIUC';
 
@@ -32,4 +36,8 @@ const { PrismaClient, BreakType } = require('@prisma/client');
         ]
     })
     console.log(breaks);
-})()
+}
+
+main().finally(async () => {
+    await prisma.$disconnect();
+});
