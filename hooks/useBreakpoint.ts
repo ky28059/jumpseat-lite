@@ -1,10 +1,12 @@
 import { useMediaQuery } from "react-responsive";
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "@/tailwind.config";
 
-
-const fullConfig = resolveConfig(tailwindConfig);
-const breakpoints = fullConfig.theme.screens;
+const breakpoints = {
+    sm: "40rem",
+    md: "48rem",
+    lg: "64rem",
+    xl: "80rem",
+    "2xl": "96rem",
+} as const;
 
 /**
  * Returns whether you are at or above the given tailwind breakpoint. Modified from
