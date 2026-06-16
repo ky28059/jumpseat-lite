@@ -11,7 +11,7 @@ import FinalizeContent from '@/app/results/FinalizeContent';
 import ResultsContext, { ResultsFilter, ResultsStage } from "@/contexts/ResultsContext";
 
 // Utils
-import type { Direction } from '@prisma/client';
+import type { Direction } from '@/generated/prisma/browser';
 import type { Combo } from '@/app/results/ComboCard';
 import type { Airport } from '@/lib/airports';
 

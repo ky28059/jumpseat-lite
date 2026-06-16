@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Direction } from '@prisma/client';
+import { Direction } from '@/generated/prisma/browser';
 import type { Combo } from '@/app/results/ComboCard';
 import type { Airport } from '@/lib/airports';
 

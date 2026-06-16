@@ -9,7 +9,7 @@ import Map from "@/components/map";
 // Utils
 import type { SchoolConfig } from "@/lib/schools";
 import type { Airport } from "@/lib/airports";
-import { Break, Direction } from "@prisma/client";
+import { Break, Direction } from "@/generated/prisma/browser";
 
 
 type SearchBoxMapProps = {

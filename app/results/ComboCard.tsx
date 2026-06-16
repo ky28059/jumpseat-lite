@@ -8,7 +8,7 @@ import { Timeline as ItineraryTimeline } from "@/app/results/Timeline";
 import FormattedTimeRange from "@/app/search/FormattedTimeRange";
 
 // Utils
-import type { ShuttleTime } from "@prisma/client";
+import type { ShuttleTime } from "@/generated/prisma/browser";
 import type { Itinerary } from "@/lib/search/serp";
 import {
     calculateComboTimes,

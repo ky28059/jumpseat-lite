@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/db/prisma";
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 
 /**
  * Retrieves all breaks for a given school by its name.

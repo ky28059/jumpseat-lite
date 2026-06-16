@@ -4,7 +4,7 @@ import { TimeValue } from "react-aria";
 // Components
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { TimePicker } from "@/components/time-picker/time-picker";
-import { BreakType } from "@prisma/client";
+import { BreakType } from "@/generated/prisma/browser";
 
 
 type DepArrTimeProps = {

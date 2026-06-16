@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import EditableTextInput from "@/app/search/EditableTextInput";
 
 // Utils
-import type { User } from "@prisma/client";
+import type { User } from "@/generated/prisma/browser";
 import { updateProfile } from "@/lib/db/user";
 // import { sendPersonalVerificationEmail } from "@/lib/email/emailer";
 

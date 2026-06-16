@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import type { BlogPost } from '@prisma/client';
+import type { BlogPost } from '@/generated/prisma/browser';
 
 // Components
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';

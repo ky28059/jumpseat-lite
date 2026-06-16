@@ -2,7 +2,7 @@
 
 import prisma from '@/lib/db/prisma';
 import { auth } from '@/auth';
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from '@/generated/prisma/client';
 
 
 export type BlogPostWithUser = Prisma.BlogPostGetPayload<{

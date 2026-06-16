@@ -6,7 +6,7 @@ import { MdFlightLand, MdFlightTakeoff } from "react-icons/md";
 import { IoMdStopwatch } from "react-icons/io";
 import { FaShuttleVan } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { Direction } from '@prisma/client';
+import { Direction } from '@/generated/prisma/browser';
 import { ResultsStage } from '@/contexts/ResultsContext';
 
 

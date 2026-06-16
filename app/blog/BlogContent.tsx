@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react';
-import { BlogCategory } from '@prisma/client';
+import { BlogCategory } from '@/generated/prisma/browser';
 
 // Components
 import BlogPost from '@/app/blog/BlogPost';

@@ -5,7 +5,7 @@ import type { JWT } from "next-auth/jwt";
 import bcrypt from 'bcrypt';
 
 // Utils
-import type { User as PrismaUser } from '@prisma/client';
+import type { User as PrismaUser } from '@/generated/prisma/client';
 import { signInSchema } from '@/lib/config';
 
 

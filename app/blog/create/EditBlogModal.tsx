@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { BlogCategory, BlogPost } from '@prisma/client';
+import { BlogCategory, BlogPost } from '@/generated/prisma/browser';
 
 // Components
 import BlogPostContent from '@/app/blog/BlogPostContent';

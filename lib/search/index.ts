@@ -3,7 +3,7 @@
 import { DateTime } from "luxon";
 
 // Utils
-import type { Direction } from "@prisma/client";
+import type { Direction } from "@/generated/prisma/client";
 import type { Combo, ShuttleOption } from "@/app/results/ComboCard";
 import { getSchoolByName } from "@/lib/db/school";
 import { airportMap } from '@/lib/airports';

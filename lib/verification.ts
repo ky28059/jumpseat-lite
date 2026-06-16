@@ -1,9 +1,7 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/lib/db/prisma";
 import bcrypt from "bcrypt";
-
-const prisma = new PrismaClient();
 
 interface VerifyUserEmailResponse {
     success: boolean;

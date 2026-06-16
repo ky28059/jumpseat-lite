@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/db/prisma";
-import type { Break, BreakType } from "@prisma/client";
+import type { Break, BreakType } from "@/generated/prisma/client";
 
 
 /**

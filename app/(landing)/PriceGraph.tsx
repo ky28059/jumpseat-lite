@@ -550,7 +550,7 @@ export default function PriceGraph() {
                         wrapperClassName="rounded px-4! py-2! dark:bg-background! border-tertiary!"
                         labelClassName="text-xs text-secondary dark:text-primary"
                         labelFormatter={(iso) => formatDate(new Date(iso), 'M/d/yyyy')}
-                        formatter={(price: number) => [`$${price}`]}
+                        formatter={(price) => [`$${price}`]}
                     />
                     <Area
                         dataKey="price"

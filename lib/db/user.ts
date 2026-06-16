@@ -1,7 +1,7 @@
 'use server'
 
 import prisma from '@/lib/db/prisma';
-import type { User } from '@prisma/client';
+import type { User } from '@/generated/prisma/client';
 import { auth } from '@/auth';
 
 

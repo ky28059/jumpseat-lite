@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import ResultsContent from "@/app/results/ResultsContent";
 
 // Utils
-import type { Direction } from '@prisma/client';
+import type { Direction } from '@/generated/prisma/browser';
 import { SCHOOL_COOKIE_NAME } from '@/lib/config';
 import { airportLocationMap, airportMap } from "@/lib/airports";
 import { schoolToConfig } from '@/lib/schools';

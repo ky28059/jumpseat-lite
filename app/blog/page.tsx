@@ -5,7 +5,8 @@ import Link from 'next/link';
 import BlogContent from '@/app/blog/BlogContent';
 
 // Utils
-import type { BlogCategory } from '@prisma/client';
+import type { BlogCategory } from '@/generated/prisma/browser';
+import type { BlogPostWithUser } from '@/lib/db/blog';
 import prisma from '@/lib/db/prisma';
 import { auth } from '@/auth';
 
@@ -21,7 +22,7 @@ export default async function Blog({ searchParams }: { searchParams: Promise<{ t
     const posts = await prisma.blogPost.findMany({
         orderBy: [{ createdAt: 'desc' }],
         include: { author: true }
-    });
+    }) as BlogPostWithUser[]; // https://github.com/prisma/prisma/issues/28970
 
     // Display link to create blog page if user is logged in and admin
     const session = await auth();

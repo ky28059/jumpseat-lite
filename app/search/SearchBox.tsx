@@ -24,7 +24,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 // Utils
 import type { ResultsParams } from "@/app/results/page";
 import type { Airport } from "@/lib/airports";
-import { Break, BreakType, Direction } from "@prisma/client";
+import { Break, BreakType, Direction } from "@/generated/prisma/browser";
 import { cn } from "@/lib/utils";
 import { schoolToConfig } from "@/lib/schools";
 

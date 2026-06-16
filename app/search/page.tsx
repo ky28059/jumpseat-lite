@@ -32,7 +32,7 @@ export default async function Search({ searchParams }: { searchParams: Promise<{
 
     // Fetch break dates for the given school.
     // TODO: default to not purdue?
-    const breaks = await getBreaksBySchoolName(config?.name ?? "Purdue");
+    const breaks = await getBreaksBySchoolName(config.name);
 
     // Load prefilled destination airports:
     // - If there are search params set, use those first.

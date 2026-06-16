@@ -3,7 +3,7 @@
 import { FC, memo, useEffect, useRef, useState } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { mapStyle, mapStyleDark } from "./MapStyle";
-import { Direction } from "@prisma/client";
+import { Direction } from "@/generated/prisma/browser";
 
 import "./Map.css";
 
