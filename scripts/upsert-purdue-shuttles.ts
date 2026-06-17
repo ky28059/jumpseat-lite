@@ -394,7 +394,7 @@ async function main() {
     const lafData = {
         school: { connect: { id: school.id } },
         name: 'Lafayette Limo',
-        bookingUrl: 'https://lafayettelimo.bookingtool.net/v2/index.php?file=b-shuttle',
+        bookingUrl: 'https://laflimo.jumpseatapp.com/booking',
         iconUrl: '/assets/shuttle-logos/LL.jpg',
         shuttleTimes: {
             createMany: { data: lafLimoRoutes }
