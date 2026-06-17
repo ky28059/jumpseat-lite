@@ -33,6 +33,7 @@ for an example). You will need to provide
 
 #### Updating school information
 To update a school's breaks or shuttle information, simply make a pull request editing the appropriate `upsert-` script.
+The data will automatically be updated on merge.
 
 ### Running locally
 Create a `.env` in the project root exporting your Postgres database / serpapi key, Google Maps key, and Next Auth secret. This should look something like
