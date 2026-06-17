@@ -29,10 +29,10 @@ async function main() {
 
     const breaks = await prisma.break.createMany({
         data: [
-            { startDate: new Date('2025-10-11'), endDate: new Date('2025-10-14'), breakType: BreakType.Fall, schoolID: school.id },
-            { startDate: new Date('2025-11-26'), endDate: new Date('2025-11-30'), breakType: BreakType.Thanksgiving, schoolID: school.id },
-            { startDate: new Date('2025-12-20'), endDate: new Date('2026-01-11'), breakType: BreakType.Winter, schoolID: school.id },
-            { startDate: new Date('2026-03-14'), endDate: new Date('2026-03-22'), breakType: BreakType.Spring, schoolID: school.id },
+            { startDate: new Date('2026-10-10'), endDate: new Date('2026-10-13'), breakType: BreakType.Fall, schoolID: school.id },
+            { startDate: new Date('2026-11-25'), endDate: new Date('2026-11-29'), breakType: BreakType.Thanksgiving, schoolID: school.id },
+            { startDate: new Date('2026-12-19'), endDate: new Date('2027-01-10'), breakType: BreakType.Winter, schoolID: school.id },
+            { startDate: new Date('2027-03-13'), endDate: new Date('2027-03-21'), breakType: BreakType.Spring, schoolID: school.id },
             { startDate: new Date('2026-05-09'), endDate: new Date('2026-08-23'), breakType: BreakType.Summer, schoolID: school.id },
         ]
     })

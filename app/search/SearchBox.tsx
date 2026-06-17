@@ -1,10 +1,8 @@
 "use client";
 
 import { Dispatch, SetStateAction, useRef, useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { TimeValue } from "react-aria";
+import { useRouter } from "next/navigation";
 import { DateRange } from "react-day-picker";
-import { addDays, formatDate } from "date-fns";
 
 // Components
 import TypePicker from "@/components/TypePicker";
@@ -39,9 +37,9 @@ type SearchBoxProps = {
     airportLocs: [string, Airport[]][],
     dest: Set<string>,
     school: string | undefined,
-    setDest: (newDest: Set<string>) => void,
+    setDest: (d: Set<string>) => void,
     direction: Direction,
-    setDirection: (arg0: Direction) => void,
+    setDirection: (d: Direction) => void,
 }
 export default function SearchBox(props: SearchBoxProps) {
     const config = schoolToConfig(props.school);
@@ -50,18 +48,21 @@ export default function SearchBox(props: SearchBoxProps) {
 
     const [tripType, setTripType] = useState("Round trip");
 
-    const [depDate, setDepDate] = useState<Date>();
-    const [arrDate, setArrDate] = useState<Date>();
-    const [date, setDate] = useState<DateRange | undefined>({
-        from: new Date(2024, 0, 20),
-        to: addDays(new Date(2024, 0, 20), 20),
-    });
+    const [breakOption, setBreakOption] = useState<BreakType | "custom">('custom');
+    const [depDate, setDepDate] = useState<Date | undefined>();
+    const [arrDate, setArrDate] = useState<Date | undefined>();
+    const [date, setDate] = useState<DateRange | undefined>();
+
+    useEffect(() => {
+        const initialBreakData = getNextBreak(props.breakDates);
+        setBreakOption(initialBreakData.type)
+        setDate({ from: initialBreakData.from, to: initialBreakData.to });
+        setDepDate(initialBreakData.from);
+        setArrDate(initialBreakData.to);
+    }, []);
 
     const [scrollPosition, setScrollPosition] = useState({ scrollLeft: 0 });
     const scrollDemoRef = useRef<HTMLDivElement>(null);
-
-    const initialBreakOption = getNextDate(props.breakDates);
-    const [breakOption, setBreakOption] = useState<BreakType | "custom">(initialBreakOption);
 
     const handleScroll = () => {
         if (scrollDemoRef.current) {
@@ -98,7 +99,7 @@ export default function SearchBox(props: SearchBoxProps) {
             roundTrip: String(tripType === "Round trip"), // TODO?
             direction: props.direction,
             extAirports: [...props.dest.values()].join(","),
-            depDate: tripType == "One way" ? depDate.toISOString().slice(0, 10) : date?.from?.toISOString().slice(0, 10)!,
+            depDate: tripType == "One way" ? depDate.toISOString().slice(0, 10) : date?.from?.toISOString().slice(0, 10)!, // TODO: time zone confusion
             carryCnt: String(numCarryOn),
             checkCnt: String(numCheckIn)
         };
@@ -113,17 +114,6 @@ export default function SearchBox(props: SearchBoxProps) {
         if (props.direction === "toSchool") props.setDirection("fromSchool");
         else props.setDirection("toSchool");
     }
-
-    useEffect(() => {
-        if (initialBreakOption !== "custom") {
-            const nextBreak = props.breakDates.find((date) => date.breakType === initialBreakOption);
-            if (nextBreak) {
-                setDate({ from: convertTimezone(nextBreak.startDate), to: convertTimezone(nextBreak.endDate) });
-                setDepDate(convertTimezone(nextBreak.startDate));
-                setArrDate(convertTimezone(nextBreak.endDate));
-            }
-        }
-    }, [props.breakDates, initialBreakOption]);
 
     return (
         // className="flex flex-col gap-4 w-fit border rounded-md shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] p-6"
@@ -143,8 +133,10 @@ export default function SearchBox(props: SearchBoxProps) {
                                 onClick={() => {
                                     const threeDaysFromNow = new Date();
                                     threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
+                                    threeDaysFromNow.setHours(0, 0, 0, 0);
                                     const tenDaysFromNow = new Date(threeDaysFromNow)
                                     tenDaysFromNow.setDate(tenDaysFromNow.getDate() + 7);
+
                                     setBreakOption("custom")
                                     setDate({ from: threeDaysFromNow, to: tenDaysFromNow });
                                     setDepDate(threeDaysFromNow);
@@ -162,8 +154,6 @@ export default function SearchBox(props: SearchBoxProps) {
                                         value={b.breakType}
                                         onClick={() => {
                                             setBreakOption(b.breakType);
-                                            const newDate = { from: convertTimezone(b.startDate), to: convertTimezone(b.endDate) };
-                                            console.log(newDate);
                                             setDate({ from: convertTimezone(b.startDate), to: convertTimezone(b.endDate) });
                                             setDepDate(convertTimezone(b.startDate));
                                             setArrDate(convertTimezone(b.endDate));
@@ -295,20 +285,33 @@ export default function SearchBox(props: SearchBoxProps) {
     );
 }
 
-function getNextDate(dates: Break[]): BreakType | "custom" {
+function getNextBreak(dates: Break[]): { type: BreakType | 'custom', from: Date, to: Date } {
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    today.setUTCDate(today.getDate());
+    today.setUTCHours(0, 0, 0, 0);
 
     const futureDates = dates.filter((date) => date.startDate > today);
-    if (futureDates.length === 0) return "custom";
+    if (futureDates.length === 0) {
+        const threeDaysFromNow = new Date();
+        threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
+        threeDaysFromNow.setHours(0, 0, 0, 0);
+        const tenDaysFromNow = new Date(threeDaysFromNow)
+        tenDaysFromNow.setDate(tenDaysFromNow.getDate() + 7);
 
-    let nextDate = futureDates[0];
-    for (let date of futureDates) {
-        if (date.startDate < nextDate.startDate) {
-            nextDate = date;
+        return { type: "custom", from: threeDaysFromNow, to: tenDaysFromNow };
+    }
+
+    let nextBreak = futureDates[0];
+    for (const date of futureDates) {
+        if (date.startDate < nextBreak.startDate) {
+            nextBreak = date;
         }
     }
-    return nextDate.breakType;
+    return {
+        type: nextBreak.breakType,
+        from: convertTimezone(nextBreak.startDate),
+        to: convertTimezone(nextBreak.endDate)
+    };
 }
 
 function breakTypeToName(t: BreakType) {
