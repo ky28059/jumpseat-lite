@@ -35,10 +35,7 @@
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
 
-    --animate-accordion-down: accordion-down 0.2s ease-out;
-    --animate-accordion-up: accordion-up 0.2s ease-out;
     --animate-loop-scroll: loop-scroll 150s linear infinite;
-    --animate-pulse-blue: pulseBlue .8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
     --shadow-inset-left: inset -10px 0 5px -5px #ffffff;
     --shadow-inset-right: inset 10px 0 5px -5px #ffffff;
@@ -47,41 +44,12 @@
     --shadow-inset-right-dark: inset 10px 0 5px -5px #141414;
     --shadow-inset-both-dark: inset -10px 0 5px -5px #141414, inset 10px 0 5px -5px #141414;
 
-    @keyframes accordion-down {
-        from {
-            height: 0;
-        }
-        to {
-            height: var(--radix-accordion-content-height);
-        }
-    }
-
-    @keyframes accordion-up {
-        from {
-            height: var(--radix-accordion-content-height);
-        }
-        to {
-            height: 0;
-        }
-    }
-
     @keyframes loop-scroll {
         from {
             transform: translateX(0);
         }
         to {
             transform: translateX(-6800px);
-        }
-    }
-
-    @keyframes pulseBlue {
-        0%, 100% {
-            opacity: 1;
-            color: #3b82f6;
-        }
-        50% {
-            opacity: 0.5;
-            color: #3b82f6;
         }
     }
 }
